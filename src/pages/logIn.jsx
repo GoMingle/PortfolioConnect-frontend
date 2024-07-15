@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { apiLogIn } from "../services/auth";
+import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
+  const [isSubmitting , setIsSubmitting] = useState(false);
+  const navigate = useNavigate()
+
+  console.log(isSubmitting);
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -14,15 +19,20 @@ const LogIn = () => {
   };
   const onSubmit = async(data) => {
     console.log(data);
+    setIsSubmitting(true);
     try {
       const res = await apiLogIn({
         email: data.email,
         password: data.password
       })
-      console.log("Response: ", res);
-      console.log("Second: I got called");
+      console.log("Response: ", res.data);
+      navigate("/dashboard")
+      
     } catch (error) {
       console.log(error)
+    }
+    finally {
+      setIsSubmitting(false)
     }
   };
   return (
@@ -73,7 +83,8 @@ const LogIn = () => {
               type="submit"
               className="w-full px-4 py-2 text-white  rounded-md bg-teal-400"
             >
-              Login
+              {isSubmitting ? "Loading...." : "Login"}
+              
             </button>
 
           </form>
