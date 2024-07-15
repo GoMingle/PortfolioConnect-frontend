@@ -1,12 +1,11 @@
-
-
 import { useState } from "react";
-const Education = () => {
 
-    const [educations, setEducations] = useState([{
-        schoolName: '',
-        program: '',
-        qualification: '',
+const AddExperience = () => {
+
+    const [experiences, setExperiences] = useState([{
+        companyName: '',
+        role: '',
+        responsibility: '',
         location: '',
         startDate: '',
         endDate: ''
@@ -14,16 +13,16 @@ const Education = () => {
     
       const handleChange = (index, event) => {
         const { name, value } = event.target;
-        const newEducations = [...educations];
-        newEducations[index][name] = value;
-        setEducations(newEducations);
+        const newExperiences = [...experiences];
+        newExperiences[index][name] = value;
+        setExperiences(newExperiences);
       };
     
-      const handleAddEducation = () => {
-        setEducations([...educations, {
-          schoolName: '',
-          program: '',
-          qualification: '',
+      const handleAddExperience = () => {
+        setExperiences([...experiences, {
+          companyName: '',
+          role: '',
+          responsibility: '',
           location: '',
           startDate: '',
           endDate: ''
@@ -32,49 +31,49 @@ const Education = () => {
     
       const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Education Data:', educations);
+        console.log('Experience Data:', experiences);
       };
+
   return (
     <div className="bg-gray-900 h-full">
         <div className="bg-transparent p-6  max-w-lg mx-auto">
       <form onSubmit={handleSubmit}>
-        <h2 className="text-xl font-bold text-gray-400 text-center mb-4 mt-8">Education</h2>
-        {educations.map((education, index) => (
+        <h2 className="text-xl font-bold text-gray-400 mb-4 mt-8 text-center">Experience</h2>
+        {experiences.map((experience, index) => (
           <div key={index} className="mb-4">
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
-                School Name
+                Company Name
               </label>
               <input
                 type="text"
-                name="schoolName"
-                value={education.schoolName}
+                name="companyName"
+                value={experience.companyName}
                 onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
-                Program
+                Role
               </label>
               <input
                 type="text"
-                name="program"
-                value={education.program}
+                name="role"
+                value={experience.role}
                 onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
-                Qualification
+                Responsibility
               </label>
-              <input
-                type="text"
-                name="qualification"
-                value={education.qualification}
+              <textarea
+                name="responsibility"
+                value={experience.responsibility}
                 onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
             <div className="mb-2">
@@ -84,9 +83,9 @@ const Education = () => {
               <input
                 type="text"
                 name="location"
-                value={education.location}
+                value={experience.location}
                 onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
             <div className="mb-2">
@@ -96,9 +95,9 @@ const Education = () => {
               <input
                 type="date"
                 name="startDate"
-                value={education.startDate}
+                value={experience.startDate}
                 onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
             <div className="mb-2">
@@ -108,39 +107,36 @@ const Education = () => {
               <input
                 type="date"
                 name="endDate"
-                value={education.endDate}
+                value={experience.endDate}
                 onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400 "
               />
             </div>
           </div>
         ))}
-        <div className="flex gap-40 ">
-        <div className="mb-4 ">
-        
+       <div className="flex gap-40">
+       <div className="mb-4">
           <button
             type="button"
-            onClick={handleAddEducation}
-            className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={handleAddExperience}
+            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400  text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
           >
-            Add Education
+            Add Experience
           </button>
-          
         </div>
-        <div className="flex items-center justify-between mb-4 ">
+        <div className="flex items-center justify-between mb-4">
           <button
             type="submit"
-            className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400  text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
           >
-            Save Education
+            Save Experience
           </button>
-        </div>
+       </div>
         </div>
       </form>
     </div>
-
     </div>
   )
 }
 
-export default Education
+export default AddExperience;

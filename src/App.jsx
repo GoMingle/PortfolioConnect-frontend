@@ -11,8 +11,17 @@ import Experiences from './pages/dashboard/pages/experiences'
 import Projects from './pages/dashboard/pages/projects'
 import UserProfile from './pages/dashboard/pages/userProfile'
 import Socials from './pages/dashboard/pages/socials'
-import Education from './pages/dashboard/pages/education'
-import Volunteering from './pages/dashboard/pages/volunteering'
+import AddEducation from './pages/dashboard/pages/addEducation'
+import Educations from './pages/dashboard/pages/educations'
+import AddUserProfile from './pages/dashboard/pages/addUserProfile'
+import AddSkill from './pages/dashboard/pages/addSkill'
+import AddSocial from './pages/dashboard/pages/addSocial'
+import AddAchievement from './pages/dashboard/pages/addAchievement'
+import AddExperience from './pages/dashboard/pages/addExperience'
+import AddProject from './pages/dashboard/pages/addProject'
+import AddVolunteering from './pages/dashboard/pages/addVolunteering'
+import Volunteerings from './pages/dashboard/pages/volunteerings'
+import Overview from './pages/dashboard/pages/overview'
 
 
 const router = createBrowserRouter([
@@ -20,9 +29,19 @@ const router = createBrowserRouter([
   {path:'/login', element: <LogIn/>},
    {path: '/dashboard', element: <DashboardLayout/>,
     children: [
+
+      {
+        index: true,
+        element: <Overview/>,
+      },
       {
         path: "userprofile",
         element: <UserProfile/>,
+      },
+      {
+        path: "userProfile/add-userProfile",
+        element: <AddUserProfile/>,
+
       },
       {
         path: "skills",
@@ -30,12 +49,27 @@ const router = createBrowserRouter([
       
       },
       {
+        path: "skills/add-skill",
+        element: <AddSkill/>
+
+      },
+      {
         path : "socials",
         element: <Socials/>,
       },
       {
+        path: "socials/add-social",
+        element: <AddSocial/>,
+
+      },
+      {
         path: "achievements",
         element: <Achievements/>,
+      },
+      {
+        path: "achievements/add-achievement",
+        element: <AddAchievement/>,
+
       },
     
       {
@@ -43,17 +77,37 @@ const router = createBrowserRouter([
         element: <Experiences/>,
       },
       {
+        path: "experiences/add-experience",
+        element: <AddExperience/>
+
+      },
+      {
         path: "projects",
         element: <Projects/>,
       },
       {
-        path: "education",
-        element: <Education/>,
+        path: "projects/add-project",
+        element: <AddProject/>
+
       },
       {
-        path: "volunteering",
-        element: <Volunteering/>
-      }
+        path: "educations",
+        element: <Educations/>,
+      },
+      {
+        path: "educations/add-education",
+        element: <AddEducation/>
+
+      },
+      {
+        path: "volunteerings",
+        element: <Volunteerings/>,
+      },
+      {
+        path: "volunteerings/add-volunteering",
+        element: <AddVolunteering/>,
+
+      },
     ]
    },
   {path: '/preview', element: <Preview/>},
