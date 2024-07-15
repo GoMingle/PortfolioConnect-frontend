@@ -201,7 +201,18 @@ export default{
          links: 'https://github.com/yourusername/blog-platform',
          
       }
-    ]
+    ],
+
+   //  ACHIEVEMENTS:[
+   //    {
+   //       award: 'Top Developer Award',
+   //       image:
+   //       description:  'Recognized as the top developer in my company for outstanding performance and contributions to key projects.',
+   //       date: 'June 2023',
+   //       nameOfInstitution: 'MEST'
+
+   //    }
+   //  ]
 
    
 }
