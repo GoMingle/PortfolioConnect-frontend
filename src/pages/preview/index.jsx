@@ -64,50 +64,40 @@ const Preview = () => {
       />
     </div>
 
-    <div>
-    <div>
-            <h3 className="text-center text-4xl font-semibold">Projects</h3>
-        </div>
-      <ProjectsCard
-      projectName="GoMingle Event Management app"
-      img={headshot}
-      description=""
-      contributors=""
-      skills=""
-      nameOfInstitution=""
-      startDate=""
-      endDate=""
-      />
-      <ProjectsCard
-      projectName="GoMingle Event Management app"
-      img={headshot}
-      description=""
-      contributors=""
-      skills=""
-      nameOfInstitution=""
-      startDate=""
-      endDate=""
-      />
-      <ProjectsCard
-      projectName="GoMingle Event Management app"
-      img={headshot}
-      description=""
-      contributors=""
-      skills=""
-      nameOfInstitution=""
-      startDate=""
-      endDate=""
-      />
-      <ProjectsCard
-      projectName="GoMingle Event Management app"
-      img={headshot}
-      description=""
-      contributors=""
-      skills=""
-      nameOfInstitution=""
-      startDate=""
-      endDate=""
-      />
+    <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
+      <h3 className="text-center text-4xl font-semibold mb-8">Projects</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ProjectsCard
+          projectName="GoMingle Event Management app"
+          img={headshot}
+          description="An app to manage events efficiently."
+          contributors="Team A"
+          skills="React, Node.js, MongoDB"
+          nameOfInstitution="Institution A"
+          startDate="2023-01"
+          endDate="2023-06"
+        />
+        <ProjectsCard
+          projectName="Another Project"
+          img={headshot}
+          description="A description for another project."
+          contributors="Team B"
+          skills="Angular, Firebase"
+          nameOfInstitution="Institution B"
+          startDate="2022-05"
+          endDate="2022-12"
+        />
+        <ProjectsCard
+          projectName="Third Project"
+          img={headshot}
+          description="Details about the third project."
+          contributors="Team C"
+          skills="Vue, Laravel"
+          nameOfInstitution="Institution C"
+          startDate="2021-09"
+          endDate="2022-04"
+        />
+      </div>
     </div>
     </>
 
