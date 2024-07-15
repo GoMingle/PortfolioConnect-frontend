@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { apiLogIn } from "../services/auth";
 
 const LogIn = () => {
 
@@ -11,8 +12,18 @@ const LogIn = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log(data);
+    try {
+      const res = await apiLogIn({
+        email: data.email,
+        password: data.password
+      })
+      console.log("Response: ", res);
+      console.log("Second: I got called");
+    } catch (error) {
+      console.log(error)
+    }
   };
   return (
     <div>
