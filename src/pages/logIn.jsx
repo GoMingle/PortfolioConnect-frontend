@@ -4,9 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { apiLogIn } from "../services/auth";
 import { useNavigate } from "react-router-dom";
+import { FallingLines } from 'react-loader-spinner';
+import { toast } from "react-toastify";
 
 const LogIn = () => {
-  const [isSubmitting , setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate()
 
   console.log(isSubmitting);
@@ -17,7 +19,7 @@ const LogIn = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     console.log(data);
     setIsSubmitting(true);
     try {
@@ -26,10 +28,13 @@ const LogIn = () => {
         password: data.password
       })
       console.log("Response: ", res.data);
-      navigate("/dashboard")
-      
+      toast.success(res.data);
+      setTimeout(() => { navigate("/dashboard") }, 5000);
+
+
     } catch (error) {
       console.log(error)
+      toast.error(error)
     }
     finally {
       setIsSubmitting(false)
@@ -55,8 +60,8 @@ const LogIn = () => {
                 }
               />
               {errors.email && (
-              <p className="text-red-500">{errors.email.message}</p>
-            )}
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
             </div>
             <div className="relative">
               <label htmlFor="password" className="block text-sm font-medium text-gray-700"></label>
@@ -66,12 +71,12 @@ const LogIn = () => {
                 placeholder=" Enter your password"
                 className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring  focus:ring-teal-400"
                 {
-                  ...register("password", { required: "Password is required" })
-                  }
+                ...register("password", { required: "Password is required" })
+                }
               />
               {errors.password && (
-              <p className="text-red-500">{errors.password.message}</p>
-            )}
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
               <span
                 className="absolute inset-y-0 right-0 flex items-center px-2 cursor-pointer"
                 onClick={togglePasswordVisibility}
@@ -81,10 +86,15 @@ const LogIn = () => {
             </div>
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white  rounded-md bg-teal-400"
+              className="w-full px-4 py-2 text-white  rounded-md bg-teal-400 "
             >
-              {isSubmitting ? "Loading...." : "Login"}
-              
+              {isSubmitting ? <FallingLines
+                color="#FFFFFF"
+                width="50"
+                visible={true}
+                ariaLabel="falling-circles-loading"
+              /> : "Login"}
+
             </button>
 
           </form>
