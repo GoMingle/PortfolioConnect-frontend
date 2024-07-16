@@ -1,7 +1,6 @@
 import headshot from "../../assets/images/headshot.jpg"
 import PreviewSkill from "./components/previewSkill"
 import ExperienceTile from "./components/experienceTile"
-import Card from "./components/card"
 import ProjectsCard from "./components/projectsCard"
 import projectOne from "../../assets/images/projectOne.png";
 import projectTwo from "../../assets/images/projectTwo.png";
@@ -12,7 +11,9 @@ import projectSix from "../../assets/images/projectSix.png"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+import VolunteeringCard from "./components/volunteeringCard"
+import EducationTile from "./components/educationTile"
+import Bio from "./components/bio"
 
 const settings = {
   dots: true,
@@ -40,55 +41,56 @@ const settings = {
   ]
 };
 
-
-
 const Preview = () => {
   return (
     <>
       <div>
-        <h1 className="font-bold text-2xl bg-gradient-to-r from-teal-500 to-gray-900 text-transparent inl bg-clip-text mt-6 ml-5">Portfolio <span className="text-gray-900">Connect</span></h1>
+        <h1 className="font-bold text-2xl bg-gradient-to-r from-teal-500 to-gray-900 text-transparent bg-clip-text mt-6 ml-5">Portfolio <span className="text-gray-900">Connect</span></h1>
       </div>
-      <div className="flex items-center mt-16 ml-20 space-x-10 shadow-2xl mr-20">
-        <img className="rounded-full size-1/4 ml-10 mb-6" src={headshot} alt="headshot image" />
-        <div>
-          <h3 className="text-6xl mb-4 text-teal-500 shadow-sm">Agnes Odame</h3>
-          <p className="text-md">Junior Web Developer | React | Angular | JavaScript | MySQL | Ionic | Datawrapper |<br /> UI/UX Designer|Adobe Products| ISC2 Candidate| Developed Dagbani App for <br /> students with over 2,000 downloads |</p>
-        </div>
 
+      <div className="overflow-hidden">
+        <Bio
+          profilePicture={headshot}
+          firstName="Agnes"
+          lastName="Odame"
+          otherName=""
+          email="agnesodame5@gmail.com"
+          bio="Junior Web Developer | React | Angular | JavaScript | MySQL | Ionic | Datawrapper UI/UX Designer|Adobe Products| ISC2 Candidate| Developed Dagbani App for students with over 2,000 downloads"
+          location="Greater Accra, Ghana"
+          contact="0503627690"
+        />
       </div>
+
       <PreviewSkill />
 
-      <div className="mt-12 text-center mb-12">
+      <div className="text-center mt-40 overflow-hidden">
         <h3 className="text-4xl mb-6">My Experience</h3>
         <div className="flex flex-col gap-[13px] group">
           <ExperienceTile
-            companyName="Company X - Los Angeles, CA | Frontend Engineer | 08/2021 - Present"
-            responsibility="Manage a team of 3 engineers"
-            roleOne="Revamped UI for a customer-facing e-commerce site with 200k+ unique visitors per month"
-            roleTwo="Automated image optimization, using Grunt and minified JS and CSS, which reduced page load times by up to 30%"
+            companyName="Company Y - San Francisco, CA | "
+            role="Software Engineer |"
+            startDate="06/2019 - "
+            endDate="08/2021"
+            responsibility="Manage a team of 3 engineers. Revamped UI for a customer-facing e-commerce site with 200k+ unique visitors per month"
           />
           <ExperienceTile
-            companyName="Company Y - San Francisco, CA | Software Engineer | 06/2019 - 08/2021"
-            responsibility="Lead the development of a new internal tool"
-            roleOne="Implemented a microservice architecture to improve scalability"
-            roleTwo="Conducted code reviews and mentored junior developers"
-            roleThree="Collaborated with the product team to define project requirements"
+            companyName="Company Y - San Francisco, CA | "
+            role="Software Engineer |"
+            startDate="06/2019 - "
+            endDate="08/2021"
+            responsibility="Manage a team of 3 engineers. Revamped UI for a customer-facing e-commerce site with 200k+ unique visitors per month"
           />
           <ExperienceTile
-            companyName="Company Z - New York, NY | Junior Developer | 01/2017 - 06/2019"
-            responsibility="Worked on various frontend and backend tasks"
-            roleOne="Developed and maintained company website"
-            roleTwo="Optimized database queries to improve performance"
-            roleThree="Assisted in the deployment of applications"
+            companyName="Company Y - San Francisco, CA | "
+            role="Software Engineer |"
+            startDate="06/2019 - "
+            endDate="08/2021"
+            responsibility="Manage a team of 3 engineers. Revamped UI for a customer-facing e-commerce site with 200k+ unique visitors per month"
           />
         </div>
       </div>
 
-
-
-
-  
-      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center shadow-2xl">
+    <div className="mt-32 bg-gray-50 min-h-screen flex flex-col items-center shadow-2xl overflow-hidden">
         <h3 className="text-center text-4xl font-semibold mb-8">Projects</h3>
         <div className="w-full">
           <Slider {...settings}>
@@ -163,30 +165,69 @@ const Preview = () => {
                 startDate="2018-09"
                 endDate="2019-04"
               />
-              
             </div>
           </Slider>
         </div>
       </div>
 
-      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
-        <Card
-          role="Full Stack Developer"
-          company=""
-          duration="2017-2018"
-          description="Tolerably earnestly middleton extremely distrusts she boy now not. Add ad offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may."
-          color="bg-blue-500"
-        />
-        <Card
-          role="Front End Developer"
-          company="at Google Company"
-          duration="2017-2018"
-          description="Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."
-          color="bg-red-500"
-        />
+      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center overflow-hidden mt-16">
+        <h3 className="text-center text-4xl font-semibold pb-14">Volunteering</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <VolunteeringCard
+            organization="Volunteer One"
+            responsibility="Intern"
+            description="A brief description about the volunteer work."
+            startDate="20th July, 2024"
+            endDate="7th September"
+          />
+          <VolunteeringCard
+            organization="Volunteer Two"
+            responsibility="Intern"
+            description="A brief description about the volunteer work."
+            startDate="20th July, 2024"
+            endDate="7th September"
+          />
+          <VolunteeringCard
+            organization="Volunteer Three"
+            responsibility="Intern"
+            description="A brief description about the volunteer work."
+            startDate="20th July, 2024"
+            endDate="7th September"
+          />
+          <VolunteeringCard
+            organization="Volunteer Four"
+            responsibility="Intern"
+            description="A brief description about the volunteer work."
+            startDate="20th July, 2024"
+            endDate="7th September"
+          />
+        </div>
+      </div>
+
+      <div className="py-12 bg-gray-100 overflow-hidden mt-1">
+        <div className="container mx-auto">
+          <h3 className="text-center text-4xl font-semibold mb-8">Education</h3>
+          <div className="relative">
+            <EducationTile
+              schoolName="Mest Africa"
+              qualification="Certificate"
+              program="Web Development"
+              location="East Legon"
+              startDate="16th July, 2024 -"
+              endDate="16th July, 2024"
+            />
+            <EducationTile
+              schoolName="Mest Africa"
+              qualification="Certificate"
+              program="Web Development"
+              location="East Legon"
+              startDate="16th July, 2024 -"
+              endDate="16th July, 2024"
+            />
+          </div>
+        </div>
       </div>
     </>
-
   )
 }
 

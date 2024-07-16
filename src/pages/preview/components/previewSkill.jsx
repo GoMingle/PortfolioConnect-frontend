@@ -25,7 +25,7 @@ const previewSkill = [
 
 const PreviewSkill = () => {
   return (
-    <div className="bg-gradient-to-r from-gray-900 to-teal-500 text-white py-16 mt-16">
+    <div className="bg-gradient-to-r from-gray-900 to-teal-500 text-white py-16 mt-36 overflow-hidden">
       <div className="container mx-auto text-center">
         <div className="mb-8">
           <h2 className="text-6xl font-bold">
