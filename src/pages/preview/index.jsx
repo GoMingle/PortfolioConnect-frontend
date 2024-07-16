@@ -3,6 +3,44 @@ import PreviewSkill from "./components/previewSkill"
 import ExperienceTile from "./components/experienceTile"
 import Card from "./components/card"
 import ProjectsCard from "./components/projectsCard"
+import projectOne from "../../assets/images/projectOne.png";
+import projectTwo from "../../assets/images/projectTwo.png";
+import projectThree from "../../assets/images/projectThree.png";
+import projectFour from "../../assets/images/projectFour.png"
+import projectFive from "../../assets/images/projectFive.png"
+import projectSix from "../../assets/images/projectSix.png"
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+};
+
+
 
 const Preview = () => {
   return (
@@ -46,59 +84,107 @@ const Preview = () => {
         </div>
       </div>
 
-      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
-        
-      <Card
-        role="Full Stack Developer"
-        company=""
-        duration="2017-2018"
-        description="Tolerably earnestly middleton extremely distrusts she boy now not. Add ad offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may."
-        color="bg-blue-500"
-      />
-      <Card
-        role="Front End Developer"
-        company="at Google Company"
-        duration="2017-2018"
-        description="Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."
-        color="bg-red-500"
-      />
-    </div>
 
-    <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
-      <h3 className="text-center text-4xl font-semibold mb-8">Projects</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <ProjectsCard
-          projectName="GoMingle Event Management app"
-          img={headshot}
-          description="An app to manage events efficiently."
-          contributors="Team A"
-          skills="React, Node.js, MongoDB"
-          nameOfInstitution="Institution A"
-          startDate="2023-01"
-          endDate="2023-06"
+
+
+  
+      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center shadow-2xl">
+        <h3 className="text-center text-4xl font-semibold mb-8">Projects</h3>
+        <div className="w-full">
+          <Slider {...settings}>
+            <div className="p-2">
+              <ProjectsCard
+                projectName="GoMingle Event Management app"
+                img={projectOne}
+                description="An app to manage events efficiently."
+                contributors="Team A"
+                skills="React, Node.js, MongoDB"
+                nameOfInstitution="Institution A"
+                startDate="2023-01"
+                endDate="2023-06"
+              />
+            </div>
+            <div className="p-2">
+              <ProjectsCard
+                projectName="Another Project"
+                img={projectTwo}
+                description="A description for another project."
+                contributors="Team B"
+                skills="Angular, Firebase"
+                nameOfInstitution="Institution B"
+                startDate="2022-05"
+                endDate="2022-12"
+              />
+            </div>
+            <div className="p-2">
+              <ProjectsCard
+                projectName="Third Project"
+                img={projectThree}
+                description="Details about the third project."
+                contributors="Team C"
+                skills="Vue, Laravel"
+                nameOfInstitution="Institution C"
+                startDate="2021-09"
+                endDate="2022-04"
+              />
+            </div>
+            <div className="p-2">
+              <ProjectsCard
+                projectName="Fourth Project"
+                img={projectFour}
+                description="Details about the fourth project."
+                contributors="Team D"
+                skills="Python, Flask"
+                nameOfInstitution="Institution D"
+                startDate="2020-01"
+                endDate="2020-12"
+              />
+            </div>
+            <div className="p-2">
+              <ProjectsCard
+                projectName="Fifth Project"
+                img={projectFive}
+                description="Details about the fifth project."
+                contributors="Team E"
+                skills="Java, Spring"
+                nameOfInstitution="Institution E"
+                startDate="2019-05"
+                endDate="2019-11"
+              />
+            </div>
+            <div className="p-2">
+              <ProjectsCard
+                projectName="Sixth Project"
+                img={projectSix}
+                description="Details about the sixth project."
+                contributors="Team F"
+                skills="Ruby on Rails"
+                nameOfInstitution="Institution F"
+                startDate="2018-09"
+                endDate="2019-04"
+              />
+              
+            </div>
+          </Slider>
+        </div>
+      </div>
+
+      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
+        <Card
+          role="Full Stack Developer"
+          company=""
+          duration="2017-2018"
+          description="Tolerably earnestly middleton extremely distrusts she boy now not. Add ad offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may."
+          color="bg-blue-500"
         />
-        <ProjectsCard
-          projectName="Another Project"
-          img={headshot}
-          description="A description for another project."
-          contributors="Team B"
-          skills="Angular, Firebase"
-          nameOfInstitution="Institution B"
-          startDate="2022-05"
-          endDate="2022-12"
-        />
-        <ProjectsCard
-          projectName="Third Project"
-          img={headshot}
-          description="Details about the third project."
-          contributors="Team C"
-          skills="Vue, Laravel"
-          nameOfInstitution="Institution C"
-          startDate="2021-09"
-          endDate="2022-04"
+        <Card
+          role="Front End Developer"
+          company="at Google Company"
+          duration="2017-2018"
+          description="Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."
+          color="bg-red-500"
         />
       </div>
-    </div>
     </>
 
   )
