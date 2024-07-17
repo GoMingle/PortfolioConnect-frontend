@@ -9,5 +9,5 @@ export const apiLogIn = async(payload) =>{
 }
 
  export const apiCheckUsernameExists = async(userName) => {
-    return apiClient.get(`/auth/${userName}`);
+    return apiClient.get(`/auth/getUser/${userName}`);
  }
