@@ -1,6 +1,4 @@
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
-// URLs for the logos of React, Figma, and Photoshop
 const reactLogo = "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg";
 const figmaLogo = "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg";
 const photoshopLogo = "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg";

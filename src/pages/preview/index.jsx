@@ -14,6 +14,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import VolunteeringCard from "./components/volunteeringCard"
 import EducationTile from "./components/educationTile"
 import Bio from "./components/bio"
+import DownloadButton from "./components/downloadButton";
 
 const settings = {
   dots: true,
@@ -51,6 +52,7 @@ const Preview = () => {
       <div className="overflow-hidden">
         <Bio
           profilePicture={headshot}
+          userName="@Agnes5"
           firstName="Agnes"
           lastName="Odame"
           otherName=""
@@ -60,6 +62,7 @@ const Preview = () => {
           contact="0503627690"
         />
       </div>
+      <DownloadButton/>
 
       <PreviewSkill />
 
