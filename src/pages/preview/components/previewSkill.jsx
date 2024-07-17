@@ -34,7 +34,7 @@ const PreviewSkill = () => {
         </div>
         <div className="flex justify-center gap-8">
           {previewSkill.map((skill, index) => (
-            <div key={index} className="bg-slate-200 text-white p-8 rounded-full bg-opacity-15 w-72 h-96 shadow-lg hover:bg-teal-500">
+            <div key={index} className="bg-slate-200 text-white p-8 rounded-full bg-opacity-15 w-72 h-96 shadow-lg hover:bg-teal-500 ease-linear duration-300 ">
               <div className="flex justify-center mb-4">
                 <img src={skill.icon} alt={skill.title} className="h-16 w-16 mt-16" />
               </div>
