@@ -1,4 +1,4 @@
-import { AwardIcon,  BadgeCheckIcon,  GraduationCap,  Layers3Icon,  LayoutListIcon,  LogOutIcon, PanelsTopLeftIcon, SquareSplitHorizontalIcon, UserRound } from "lucide-react"
+import { AwardIcon,  BadgeCheckIcon,  GraduationCap,  Layers3Icon,  LayoutListIcon,  LogOutIcon, PanelsTopLeftIcon, SquareGanttChart, SquareSplitHorizontalIcon, UserRound } from "lucide-react"
 import { Link } from "react-router-dom"
 
 const Sidebar = () => {
@@ -7,17 +7,24 @@ const Sidebar = () => {
 
     <div className="mt-10 ml-5 text-teal-400 font-bold text-xl ">PortfolioConnect</div>
 
-   <Link to = "/dashboard/userprofile">
+    <Link to = "/dashboard">
    <div className="text-gray-200 flex mt-12 ml-11 font-serif font-semibold hover:border-2 border-teal-400 w-40 py-2  rounded-xl pl-3   ">
+        <SquareGanttChart className="size-4  mr-1 mt-1 text-teal-400"/>
+        <h1 >OverView</h1>
+    </div>
+   </Link>
+
+   <Link to = "/dashboard/userprofile">
+   <div className="text-gray-200 flex mt-2 ml-11 font-serif font-semibold hover:border-2 border-teal-400 w-40 py-2  rounded-xl pl-3   ">
         <UserRound className="size-4  mr-1 mt-1 text-teal-400"/>
         <h1 >User Profile</h1>
     </div>
    </Link>
 
-   <Link to = "/dashboard/education">
+   <Link to = "/dashboard/educations">
    <div className="text-gray-200 flex  mt-2 ml-11 font-serif font-semibold hover:border-2 border-teal-400 w-40 py-2 pl-3 rounded-xl ">
         <GraduationCap className="size-4 mr-1 mt-1 text-teal-400"/>
-        <h1>Education</h1>
+        <h1>Educations</h1>
     </div>
    </Link>
 
@@ -50,7 +57,7 @@ const Sidebar = () => {
     </div>
     </Link>
 
-    <Link to = "/dashboard/volunteering">
+    <Link to = "/dashboard/volunteerings">
     <div className="text-gray-200 flex  mt-2 ml-11 font-serif font-semibold hover:border-2 border-teal-400 w-4o py-2 pl-3 rounded-xl ">
         <SquareSplitHorizontalIcon className="size-4 mr-1 mt-1 text-teal-400"/>
         <h1>Volunteering</h1>

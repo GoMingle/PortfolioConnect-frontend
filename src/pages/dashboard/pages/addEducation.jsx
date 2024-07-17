@@ -1,29 +1,30 @@
 
-import { useState } from "react";
-const Volunteering = () => {
 
-    const [volunteerings, setVolunteerings] = useState([{
-        organization: '',
-        description: '',
-        skills: '',
-        responsibility: '',
+import { useState } from "react";
+const AddEducation = () => {
+
+    const [educations, setEducations] = useState([{
+        schoolName: '',
+        program: '',
+        qualification: '',
+        location: '',
         startDate: '',
         endDate: ''
       }]);
     
       const handleChange = (index, event) => {
         const { name, value } = event.target;
-        const newVolunteerings = [...volunteerings];
-        newVolunteerings[index][name] = value;
-        setVolunteerings(newVolunteerings);
+        const newEducations = [...educations];
+        newEducations[index][name] = value;
+        setEducations(newEducations);
       };
     
-      const handleAddVolunteering = () => {
-        setVolunteerings([...volunteerings, {
-          organization: '',
-          description: '',
-          skills: '',
-          responsibility: '',
+      const handleAddEducation = () => {
+        setEducations([...educations, {
+          schoolName: '',
+          program: '',
+          qualification: '',
+          location: '',
           startDate: '',
           endDate: ''
         }]);
@@ -31,58 +32,59 @@ const Volunteering = () => {
     
       const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Volunteering Data:', volunteerings);
+        console.log('Education Data:', educations);
       };
-    
   return (
     <div className="bg-gray-900 h-full">
-      <div className="bg-transparent p-6 max-w-lg mx-auto">
+        <div className="bg-transparent p-6  max-w-lg mx-auto">
       <form onSubmit={handleSubmit}>
-        <h2 className="text-xl font-bold text-gray-400 mb-4 mt-8 text-center">Volunteering</h2>
-        {volunteerings.map((volunteering, index) => (
+        <h2 className="text-xl font-bold text-gray-400 text-center mb-4 mt-8">Education</h2>
+        {educations.map((education, index) => (
           <div key={index} className="mb-4">
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
-                Organization
+                School Name
               </label>
               <input
                 type="text"
-                name="organization"
-                value={volunteering.organization}
+                name="schoolName"
+                value={education.schoolName}
                 onChange={(e) => handleChange(index, e)}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
-                Description
-              </label>
-              <textarea
-                name="description"
-                value={volunteering.description}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Skills
+                Program
               </label>
               <input
                 type="text"
-                name="skills"
-                value={volunteering.skills}
+                name="program"
+                value={education.program}
                 onChange={(e) => handleChange(index, e)}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
-                Responsibility
+                Qualification
               </label>
-              <textarea
-                name="responsibility"
-                value={volunteering.responsibility}
+              <input
+                type="text"
+                name="qualification"
+                value={education.qualification}
+                onChange={(e) => handleChange(index, e)}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
+              />
+            </div>
+            <div className="mb-2">
+              <label className="block text-gray-400 text-sm font-bold mb-2">
+                Location
+              </label>
+              <input
+                type="text"
+                name="location"
+                value={education.location}
                 onChange={(e) => handleChange(index, e)}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
@@ -94,7 +96,7 @@ const Volunteering = () => {
               <input
                 type="date"
                 name="startDate"
-                value={volunteering.startDate}
+                value={education.startDate}
                 onChange={(e) => handleChange(index, e)}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
@@ -106,36 +108,39 @@ const Volunteering = () => {
               <input
                 type="date"
                 name="endDate"
-                value={volunteering.endDate}
+                value={education.endDate}
                 onChange={(e) => handleChange(index, e)}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
           </div>
         ))}
-        <div className="flex gap-32">
-        <div className="mb-4">
+        <div className="flex gap-40 ">
+        <div className="mb-4 ">
+        
           <button
             type="button"
-            onClick={handleAddVolunteering}
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
+            onClick={handleAddEducation}
+            className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Add Volunteering
+            Add Education
           </button>
+          
         </div>
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-4 ">
           <button
             type="submit"
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
+            className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Save Volunteering
+            Save Education
           </button>
         </div>
         </div>
       </form>
     </div>
+
     </div>
   )
 }
 
-export default Volunteering
+export default AddEducation
