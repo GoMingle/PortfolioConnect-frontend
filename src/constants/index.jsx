@@ -1,125 +1,123 @@
-import { AwardIcon, BadgeCheckIcon, Facebook, Github, GraduationCap, Instagram, Layers3Icon, LayoutListIcon, Linkedin, PanelsTopLeftIcon, SquareSplitHorizontalIcon, Twitter, UserRound } from "lucide-react";
+import { AwardIcon, BadgeCheckIcon, Facebook, Github, GraduationCap, Instagram, Layers3Icon, LayoutListIcon, Linkedin, PanelsTopLeftIcon, SquareSplitHorizontalIcon, Twitter, UserRound, FilePlus2, Share2Icon, ViewIcon } from "lucide-react";
+
+
+export default {
+
+   OVERVIEW: [
+
+      {
+         icon: <UserRound />,
+         text: "UserProfile",
+         total: 1,
+      },
+      {
+         icon: <GraduationCap />,
+         text: "Educations",
+         total: 3,
+      },
+      {
+         icon: <LayoutListIcon />,
+         text: "Skills",
+         total: 7,
+      },
+      {
+         icon: <Layers3Icon />,
+         text: "Experiences",
+         total: 5,
+      },
+      {
+         icon: <AwardIcon />,
+         text: "Achievements",
+         total: 4,
+      },
+      {
+         icon: <PanelsTopLeftIcon />,
+         text: "Projects",
+         total: 2,
+      },
+      {
+         icon: <SquareSplitHorizontalIcon />,
+         text: "Volunteering",
+         total: 4,
+      },
+      {
+         icon: <BadgeCheckIcon />,
+         text: "Socials",
+         total: 5,
+      },
+   ],
+   EDUCATIONS: [
+      {
+         Schoolname: "Christian Vertical Center School",
+         program: "Creche/Primary/JHS",
+         qualification: "Basic Education Certificate Examination ",
+         location: "Tema Community Six",
+         startDate: "Oct 2001",
+         endDate: "September 2013",
+      },
+
+      {
+         Schoolname: "Akwamuman Senior High School",
+         program: "General Arts",
+         qualification: "West Africa Secondary School Certificate Examination ",
+         location: "Eastern Region, Akosombo",
+         startDate: "Nov 2013",
+         endDate: "Oct 2016",
+      },
+
+      {
+         Schoolname: "University of Education",
+         program: " Information Technology ",
+         qualification: "BSc Information Techology ",
+         location: "Ashanti Region, Tanoso",
+         startDate: "Oct 2017",
+         endDate: "Sept 2021",
+      },
+   ],
 
 
 
+   SKILLS: [
+      {
+         name: "JavaScript",
+         levelOfProficiency: "Intermediate",
 
-export default{
 
-    OVERVIEW:[
+      },
+      {
+         name: "CSS",
+         levelOfProficiency: "Beginner",
 
-         {
-            icon: <UserRound/>,
-            text: "UserProfile",
-            total: 1,
-         },
-         {
-            icon: <GraduationCap/>,
-            text: "Educations",
-            total: 3,
-         },
-         {
-            icon: <LayoutListIcon/>,
-            text: "Skills",
-            total: 7,
-         },
-         {
-            icon: <Layers3Icon/>,
-            text: "Experiences",
-            total: 5,
-         },
-         {
-            icon: <AwardIcon/>,
-            text: "Achievements",
-            total: 4,
-         },
-         {
-            icon: <PanelsTopLeftIcon/>,
-            text: "Projects",
-            total: 2,
-         },
-         {
-            icon: <SquareSplitHorizontalIcon/>,
-            text: "Volunteering",
-            total: 4,
-         },
-         {
-            icon: <BadgeCheckIcon/>,
-            text: "Socials",
-            total: 5,
-         },
-    ],
-    EDUCATIONS:[
-        {
-           Schoolname: "Christian Vertical Center School",
-           program: "Creche/Primary/JHS",
-           qualification: "Basic Education Certificate Examination ",
-           location: "Tema Community Six",
-           startDate: "Oct 2001",
-           endDate: "September 2013",
-        },
+      },
+      {
+         name: "Typescript",
+         levelOfProficiency: "Beginner",
 
-        {
-            Schoolname: "Akwamuman Senior High School",
-           program: "General Arts",
-           qualification: "West Africa Secondary School Certificate Examination ",
-           location: "Eastern Region, Akosombo",
-           startDate: "Nov 2013",
-           endDate: "Oct 2016",
-        },
+      },
+      {
+         name: "HTML",
+         levelOfProficiency: "Advanced",
 
-        {
-            Schoolname: "University of Education",
-            program: " Information Technology ",
-            qualification: "BSc Information Techology ",
-            location: "Ashanti Region, Tanoso",
-            startDate: "Oct 2017",
-            endDate: "Sept 2021",
-        },
-    ],
+      },
+      {
+         name: "React Native",
+         levelOfProficiency: "Beginner",
 
-  
+      },
+      {
+         name: "Angular",
+         levelOfProficiency: "Beginner",
 
-    SKILLS:[
-     {
-      name: "JavaScript",
-      levelOfProficiency: "Intermediate",
-      
-   
-     },
-     {
-      name: "CSS",
-      levelOfProficiency: "Beginner",
-   
-     },
-     {
-      name: "Typescript",
-      levelOfProficiency: "Beginner",
-   
-     },
-     {
-      name: "HTML",
-      levelOfProficiency: "Advanced",
-   
-     },
-     {
-      name: "React Native",
-      levelOfProficiency: "Beginner",
-   
-     },
-     {
-      name: "Angular",
-      levelOfProficiency: "Beginner",
-   
-     },
-     {
-      name: "MongoDB",
-      levelOfProficiency: "Intermediate",
-   
-     },
-   
-    ],
+      },
+      {
+         name: "MongoDB",
+         levelOfProficiency: "Intermediate",
 
-    EXPERIENCES: [
+      },
+
+   ],
+
+   EXPERIENCES: [
       {
          name: "Hubtel",
          role: "Frontend Developer",
@@ -160,31 +158,31 @@ export default{
          startDate: "January 2018",
          endDate: "May 2019",
       },
-    ],
+   ],
 
-    VOLUNTEERINGS: [
-       {
+   VOLUNTEERINGS: [
+      {
          organization: 'Red Cross',
          description: 'Coordinated volunteer activities and managed volunteer schedules for local community events.',
          responsibility: 'Volunteer Coordinator',
-         startDate:  'June 2020',
-         endDate:  'Present'
-       },
-       {
+         startDate: 'June 2020',
+         endDate: 'Present'
+      },
+      {
          organization: 'Local Animal Shelter',
          description: 'Provided daily care and companionship for shelter animals and assisted with adoption events.',
-          responsibility: 'Animal Care Volunteer',
-         startDate:  'January 2019',
-         endDate:  'May 2020'
-       },
-       {
+         responsibility: 'Animal Care Volunteer',
+         startDate: 'January 2019',
+         endDate: 'May 2020'
+      },
+      {
          organization: 'Environmental Cleanup',
          description: 'Led teams in local park cleanups and educated the community on environmental conservation',
-          responsibility: 'Team Leader',
-         startDate:  'March 2017',
-         endDate:  'August 2018'
-       },
-    ],
+         responsibility: 'Team Leader',
+         startDate: 'March 2017',
+         endDate: 'August 2018'
+      },
+   ],
 
    //  PROJECTS: [
    //    {
@@ -196,7 +194,7 @@ export default{
    //       startDate:
    //       endDate:
    //       link: 'https://github.com/yourusername/e-commerce-platform',
-         
+
    //    },
    //    {
    //       projectName: 'Blog Platform',
@@ -207,7 +205,7 @@ export default{
    //       startDate:
    //       endDate:
    //       link: 'https://github.com/yourusername/blog-platform',
-         
+
    //    }
    //  ],
 
@@ -246,42 +244,62 @@ export default{
    //    },
    //  ],
 
-      SOCIALS:[
-         {
-            name: 'GitHub',
-            Url: 'https://github.com/yourusername',
-            icon: <Github/>,
-            
+   SOCIALS: [
+      {
+         name: 'GitHub',
+         Url: 'https://github.com/yourusername',
+         icon: <Github />,
 
-         },
-         {
-            name:'LinkedIn',
-            Url:'https://www.linkedin.com/in/yourusername/',
-            icon: <Linkedin/>,
-            
 
-         },
-         {
-            name: 'Twitter',
-            Url: 'https://twitter.com/yourusername',
-            icon: <Twitter/>, 
+      },
+      {
+         name: 'LinkedIn',
+         Url: 'https://www.linkedin.com/in/yourusername/',
+         icon: <Linkedin />,
 
-         },
-         {
-            name: 'Instagram',
-            Url: 'https://www.instagram.com/yourusername/',
-            icon: <Instagram/>,
-            
 
-         },
-         {
-            name: 'Facebook',
-            Url: 'https://www.facebook.com/yourusername',
-            icon: <Facebook/>,
-            
+      },
+      {
+         name: 'Twitter',
+         Url: 'https://twitter.com/yourusername',
+         icon: <Twitter />,
 
-         },
-      ],
+      },
+      {
+         name: 'Instagram',
+         Url: 'https://www.instagram.com/yourusername/',
+         icon: <Instagram />,
 
-   
+
+      },
+      {
+         name: 'Facebook',
+         Url: 'https://www.facebook.com/yourusername',
+         icon: <Facebook />,
+
+
+      },
+   ],
+   FEATURE: [
+      {
+         title: "Create portfolio",
+         description: "This allows users to showcase their projects, achievements, and experiences in a visually appealing way.",
+         Icons: <FilePlus2 size={24} />,
+         iconBg: "#F2F2F2",
+      },
+      {
+         title: "Preview",
+         description: "Allows users to review and visualize their portfolio before publishing or sharing it with others.",
+         Icons: <ViewIcon size={24} />,
+         iconBg: "#F2F2F2",
+      },
+      {
+         title: "Share/connect",
+         description: "Enables users to share their portfolio with others and connect with like-minded individuals and potential employers. ",
+         Icons: <Share2Icon size={24} />,
+         iconBg: "#F2F2F2",
+      },
+   ]
+
+
 }
