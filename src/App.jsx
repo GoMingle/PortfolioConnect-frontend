@@ -6,7 +6,7 @@ import SignUp from './pages/signUp'
 import Preview from './pages/preview'
 import DashboardLayout from './pages/dashboard/layout/dashboardLayout'
 import Skills from './pages/dashboard/pages/skills'
-import Achievements from './pages/dashboard/pages/achievements'
+// import Achievements from './pages/dashboard/pages/achievements'
 import Experiences from './pages/dashboard/pages/experiences'
 import Projects from './pages/dashboard/pages/projects'
 import UserProfile from './pages/dashboard/pages/userProfile'
@@ -16,7 +16,7 @@ import Educations from './pages/dashboard/pages/educations'
 import AddUserProfile from './pages/dashboard/pages/addUserProfile'
 import AddSkill from './pages/dashboard/pages/addSkill'
 import AddSocial from './pages/dashboard/pages/addSocial'
-import AddAchievement from './pages/dashboard/pages/addAchievement'
+// import AddAchievement from './pages/dashboard/pages/addAchievement'
 import AddExperience from './pages/dashboard/pages/addExperience'
 import AddProject from './pages/dashboard/pages/addProject'
 import AddVolunteering from './pages/dashboard/pages/addVolunteering'
@@ -62,15 +62,15 @@ const router = createBrowserRouter([
         element: <AddSocial/>,
 
       },
-      {
-        path: "achievements",
-        element: <Achievements/>,
-      },
-      {
-        path: "achievements/add-achievement",
-        element: <AddAchievement/>,
+      // {
+      //   path: "achievements",
+      //   element: <Achievements/>,
+      // },
+      // {
+      //   path: "achievements/add-achievement",
+      //   element: <AddAchievement/>,
 
-      },
+      // },
     
       {
         path: "experiences",

@@ -1,4 +1,7 @@
-import { AwardIcon, BadgeCheckIcon, GraduationCap, Layers3Icon, LayoutListIcon, PanelsTopLeftIcon, SquareSplitHorizontalIcon, UserRound } from "lucide-react";
+import { AwardIcon, BadgeCheckIcon, Facebook, Github, GraduationCap, Instagram, Layers3Icon, LayoutListIcon, Linkedin, PanelsTopLeftIcon, SquareSplitHorizontalIcon, Twitter, UserRound } from "lucide-react";
+
+
+
 
 export default{
 
@@ -47,7 +50,7 @@ export default{
     ],
     EDUCATIONS:[
         {
-           name: "Christian Vertical Center School",
+           Schoolname: "Christian Vertical Center School",
            program: "Creche/Primary/JHS",
            qualification: "Basic Education Certificate Examination ",
            location: "Tema Community Six",
@@ -56,7 +59,7 @@ export default{
         },
 
         {
-            name: "Akwamuman Senior High School",
+            Schoolname: "Akwamuman Senior High School",
            program: "General Arts",
            qualification: "West Africa Secondary School Certificate Examination ",
            location: "Eastern Region, Akosombo",
@@ -65,7 +68,7 @@ export default{
         },
 
         {
-            name: "University of Education",
+            Schoolname: "University of Education",
             program: " Information Technology ",
             qualification: "BSc Information Techology ",
             location: "Ashanti Region, Tanoso",
@@ -163,7 +166,6 @@ export default{
        {
          organization: 'Red Cross',
          description: 'Coordinated volunteer activities and managed volunteer schedules for local community events.',
-         skills: 'volunteer',
          responsibility: 'Volunteer Coordinator',
          startDate:  'June 2020',
          endDate:  'Present'
@@ -171,48 +173,115 @@ export default{
        {
          organization: 'Local Animal Shelter',
          description: 'Provided daily care and companionship for shelter animals and assisted with adoption events.',
-         skills: 'volunteer',
-         responsibility: 'Animal Care Volunteer',
+          responsibility: 'Animal Care Volunteer',
          startDate:  'January 2019',
          endDate:  'May 2020'
        },
        {
          organization: 'Environmental Cleanup',
          description: 'Led teams in local park cleanups and educated the community on environmental conservation',
-         skills: 'volunteer',
-         responsibility: 'Team Leader',
+          responsibility: 'Team Leader',
          startDate:  'March 2017',
          endDate:  'August 2018'
        },
     ],
 
-    PROJECTS: [
-      {
-         projectName: 'E-commerce Platform',
-         description:  'A full-featured e-commerce platform with user authentication, product management, and payment processing.',
-         contributors: "ABC",
-         links: 'https://github.com/yourusername/e-commerce-platform',
+   //  PROJECTS: [
+   //    {
+   //       projectName: 'E-commerce Platform',
+   //       image:
+   //       description:  'A full-featured e-commerce platform with user authentication, product management, and payment processing.',
+   //       contributors: "ABC",
+   //       nameOfInstitution:
+   //       startDate:
+   //       endDate:
+   //       link: 'https://github.com/yourusername/e-commerce-platform',
          
-      },
-      {
-         projectName: 'Blog Platform',
-         description:   'A blog platform where users can create, edit, and delete posts, and leave comments.',
-         contributors: "XYZ",
-         links: 'https://github.com/yourusername/blog-platform',
+   //    },
+   //    {
+   //       projectName: 'Blog Platform',
+   //       image:
+   //       description:   'A blog platform where users can create, edit, and delete posts, and leave comments.',
+   //       contributors: "XYZ",
+   //       nameOfInstitution:
+   //       startDate:
+   //       endDate:
+   //       link: 'https://github.com/yourusername/blog-platform',
          
-      }
-    ],
+   //    }
+   //  ],
 
    //  ACHIEVEMENTS:[
    //    {
    //       award: 'Top Developer Award',
-   //       image:
+   //       img: employeeImage, 
    //       description:  'Recognized as the top developer in my company for outstanding performance and contributions to key projects.',
    //       date: 'June 2023',
    //       nameOfInstitution: 'MEST'
 
-   //    }
-   //  ]
+   //    },
+   //    {
+   //       award: 'Hackathon Winner',
+   //       img: hackathonImage,
+   //       description:   'Led a team to victory in a national hackathon, developing an innovative solution for waste management.',
+   //       date:  'December 2022',
+   //       nameOfInstitution: "MNOP"
+
+   //    },
+   //    {
+   //       award: 'Certified React Developer',
+   //       img: certifiedImage,
+   //       description:  'Earned the React Developer Certification from a reputable online learning platform.',
+   //       date: 'March 2022',
+   //       nameOfInstitution: 'UVWX'
+
+   //    },
+   //    {
+   //       award: 'Published Author',
+   //       img: researchImage,
+   //       description:   'Published an article on web development best practices in a well-known tech magazine.',
+   //       date: 'September 2021',
+   //       nameOfInstitution: 'EFGH'
+
+   //    },
+   //  ],
+
+      SOCIALS:[
+         {
+            name: 'GitHub',
+            Url: 'https://github.com/yourusername',
+            icon: <Github/>,
+            
+
+         },
+         {
+            name:'LinkedIn',
+            Url:'https://www.linkedin.com/in/yourusername/',
+            icon: <Linkedin/>,
+            
+
+         },
+         {
+            name: 'Twitter',
+            Url: 'https://twitter.com/yourusername',
+            icon: <Twitter/>, 
+
+         },
+         {
+            name: 'Instagram',
+            Url: 'https://www.instagram.com/yourusername/',
+            icon: <Instagram/>,
+            
+
+         },
+         {
+            name: 'Facebook',
+            Url: 'https://www.facebook.com/yourusername',
+            icon: <Facebook/>,
+            
+
+         },
+      ],
 
    
 }
