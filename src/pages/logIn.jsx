@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { apiLogIn } from "../services/auth";
 import { useNavigate } from "react-router-dom";
-import { FallingLines } from 'react-loader-spinner';
 import { toast } from "react-toastify";
+import Loader from "../components/loader";
 
 const LogIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +34,7 @@ const LogIn = () => {
 
     } catch (error) {
       console.log(error)
-      toast.error(error)
+      toast.error("An error occurred!")
     }
     finally {
       setIsSubmitting(false)
@@ -88,12 +88,7 @@ const LogIn = () => {
               type="submit"
               className="w-full px-4 py-2 text-white  rounded-md bg-teal-400 "
             >
-              {isSubmitting ? <FallingLines
-                color="#FFFFFF"
-                width="50"
-                visible={true}
-                ariaLabel="falling-circles-loading"
-              /> : "Login"}
+              {isSubmitting ? <Loader/> : "Login"}
 
             </button>
 

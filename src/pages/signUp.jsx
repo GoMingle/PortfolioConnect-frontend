@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 import { apiCheckUsernameExists, apiSignUp } from "../services/auth";
-import { FallingLines } from "react-loader-spinner";
 import { toast } from "react-toastify";
+import Loader from "../components/loader";
+import { debounce } from "lodash";
 
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,30 +16,45 @@ const SignUp = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const[isUsernameLoading, setIsUsernameLoading] =useState(false);
 
 
   const userNameWatch = watch ("userName");
-  console.log(userNameWatch)
+  
 
   useEffect(() => {
+   const debouncedSearch = debounce(async() =>{
     if (userNameWatch) {
-      checkuserName(userNameWatch);
+      await checkuserName(userNameWatch);
     }
+   }, 1000)
+   debouncedSearch();
+
+   return () => {
+    debouncedSearch.cancel();
+   }
   }, [userNameWatch]);
 
   const checkuserName = async (userName) => {
+  
+    setIsUsernameLoading(true);
     try {
       const res = await apiCheckUsernameExists(userName)
       console.log(res.data)
       const user = res.data.user;
       if (user){
          setUsernameNotAvailable(true)
+         setUsernameAvailable(false)
       }else{
-       setUsernameAvailable(true)
+       setUsernameAvailable(true);
+       setUsernameNotAvailable(false);
       }
     } catch (error) {
       console.log(error);
+      toast.error("An error occured");
 
+    }finally{
+      setIsUsernameLoading(false);
     }
   };
 
@@ -74,7 +90,7 @@ const SignUp = () => {
 
     } catch (error) {
       console.log(error);
-      toast.error(error.message)
+      toast.error("An error occured!")
     }
     finally {
       setIsSubmitting(false)
@@ -149,12 +165,15 @@ const SignUp = () => {
               {errors.userName && (
                 <p className="text-red-500">{errors.userName.message}</p>
               )}
+             <div className="flex items-center">
+              {isUsernameLoading && <Loader/>}
               {
                 UsernameAvailable && (<p className="text-green-500">Username Available</p>)
               }
               {
                 usernameNotAvailable && (<p className="text-red-500">Username is already taken</p>)
               }
+             </div>
             </div>
 
 
@@ -236,12 +255,7 @@ const SignUp = () => {
               type="submit"
               className="w-full px-4 py-2 text-white bg-teal-400 rounded-md"
             >
-              {isSubmitting ? <FallingLines
-                color="#FFFFFF"
-                width="50"
-                visible={true}
-                ariaLabel="falling-circles-loading"
-              /> : "SignUp"}
+              {isSubmitting ? <Loader/> : "SignUp"}
 
 
             </button>
