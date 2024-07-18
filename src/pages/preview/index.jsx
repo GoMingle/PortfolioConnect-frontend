@@ -14,7 +14,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import VolunteeringCard from "./components/volunteeringCard"
 import EducationTile from "./components/educationTile"
 import Bio from "./components/bio"
-import DownloadButton from "./components/downloadButton";
+import AchievementCard from "./components/achievementCard";
+import cv from "../../assets/pdf/cv.pdf"
+
+
 
 const settings = {
   dots: true,
@@ -52,7 +55,6 @@ const Preview = () => {
       <div className="overflow-hidden">
         <Bio
           profilePicture={headshot}
-          userName="@Agnes5"
           firstName="Agnes"
           lastName="Odame"
           otherName=""
@@ -60,9 +62,12 @@ const Preview = () => {
           bio="Junior Web Developer | React | Angular | JavaScript | MySQL | Ionic | Datawrapper UI/UX Designer|Adobe Products| ISC2 Candidate| Developed Dagbani App for students with over 2,000 downloads"
           location="Greater Accra, Ghana"
           contact="0503627690"
+          linkedIn="https://www.linkedin.com/in/yourprofile"
+          Instagram="https://www.instagram.com/yourprofile"
+          twitterLink="https://twitter.com/yourprofile"
+          githubLink="https://github.com/yourprofile"
         />
       </div>
-      <DownloadButton/>
 
       <PreviewSkill />
 
@@ -93,7 +98,7 @@ const Preview = () => {
         </div>
       </div>
 
-    <div className="mt-32 bg-gray-50 min-h-screen flex flex-col items-center shadow-2xl overflow-hidden">
+      <div className="mt-32 bg-gray-50 min-h-screen flex flex-col items-center shadow-md overflow-hidden">
         <h3 className="text-center text-4xl font-semibold mb-8">Projects</h3>
         <div className="w-full">
           <Slider {...settings}>
@@ -228,6 +233,19 @@ const Preview = () => {
               endDate="16th July, 2024"
             />
           </div>
+        </div>
+      </div>
+
+      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center overflow-hidden mt-16">
+        <h3 className="text-center text-4xl font-semibold pb-14">Achievement</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <AchievementCard
+            img={cv}
+            Award="Web Development"
+            nameOfInstitution="IBM"
+            description="Certified by IBM."
+            date="18th July, 2024"
+          />
         </div>
       </div>
     </>
