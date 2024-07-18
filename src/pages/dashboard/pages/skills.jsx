@@ -1,83 +1,30 @@
+import { Edit, TrashIcon } from "lucide-react";
+import PagesLayout from "../layout/pagesLayout";
+import K from "../../../constants";
+import { useNavigate } from "react-router-dom";
 
-import { useState } from "react";
+
 
 const Skills = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="bg-teal-500 h-full">
+      <PagesLayout headerText="Skills" buttonText="Add New Skill" onClick={() => navigate("/dashboard/skills/add-skill")}>
+        <div className="grid grid-cols-4 gap-6 " > 
+          { K.SKILLS.map(({name, levelOfProficiency}, index) => (
+                <div key={index} className=" bg-white  shadow-md rounded-xl flex flex-col p-5">
+                  <div className="ml-auto flex gap-x-2 ">
+                    <span ><Edit className="text-gray-900 size-4"/></span>
+                    <span><TrashIcon className="text-gray-900 size-4"/></span>
+                  </div>
+                  <span className="font-bold font-sans text-lg text-gray-800">{name}</span>
+                  <span className="text-gray-800">{levelOfProficiency}</span>
+                </div>
+          )
 
-    const [skills, setSkills] = useState([{ name: '', level: '' }]);
-    const handleChange = (index, event) => {
-        const { name, value } = event.target;
-        const newSkills = [...skills];
-        newSkills[index][name] = value;
-        setSkills(newSkills);
-      };
-    
-      const handleAddSkill = () => {
-        setSkills([...skills, { name: '', level: '' }]);
-      };
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Skills Data:', skills);
-      };
-  return(  
-    <div className="bg-gray-900 h-full">
-     <div className="bg-transparent p-6  max-w-lg mx-auto ">
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-xl font-bold text-gray-400 text-center mb-4 mt-8">Skills</h2>
-        {skills.map((skill, index) => (
-          <div key={index} className="mb-4">
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Skill Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={skill.name}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Level of Proficiency
-              </label>
-              <select
-                name="level"
-                value={skill.level}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              >
-                <option value="">Select...</option>
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-                <option value="Expert">Expert</option>
-              </select>
-            </div>
-          </div>
-        ))}
-        <div className=" flex gap-56">
-        <div className="mb-4">
-        <button
-            type="button"
-            onClick={handleAddSkill}
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Add Skill
-          </button>
+          )}
         </div>
-        <div className="flex items-center justify-between mb-4">
-          <button
-            type="submit"
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Save Skills
-          </button>
-        </div>
-        </div>
-      </form>
-    </div>
+      </PagesLayout>
     </div>
   )
 }
