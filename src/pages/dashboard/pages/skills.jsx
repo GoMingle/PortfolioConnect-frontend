@@ -9,7 +9,7 @@ const Skills = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-teal-500 h-full">
-      <PagesLayout headerText="Skills" buttonText="Add New Skill" onClick={() => navigate("/dashboard/skills/add-skill")}>
+      <PagesLayout headerText="SKILLS" buttonText="Add New Skill" onClick={() => navigate("/dashboard/skills/add-skill")}>
         <div className="grid grid-cols-4 gap-6 " > 
           { K.SKILLS.map(({name, levelOfProficiency}, index) => (
                 <div key={index} className=" bg-white  shadow-md rounded-xl flex flex-col p-5">
