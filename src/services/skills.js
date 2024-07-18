@@ -4,8 +4,8 @@ export const apiAddSkill = async (payload) => {
 return apiClient.post("/skills" , payload);
 }
 
-export const apiGetSkills = async (payload) => {
-    return apiClient.get("/skills" , payload);
+export const apiGetSkills = async () => {
+    return apiClient.get("/skills" );
 };
 
 export const apiGetSkillById = async (id) => {

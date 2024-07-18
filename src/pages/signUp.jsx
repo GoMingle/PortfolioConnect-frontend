@@ -77,7 +77,7 @@ const SignUp = () => {
       email: data.email,
       password: data.password,
       confirmPassword: data.password,
-      termsAndConditions: data.terms,
+      termsAndConditions: data.terms ? "Accept": "Reject" ,
     };
     if (data.otherNames) {
       payload = { ...payload, otherNames: data.otherNames };

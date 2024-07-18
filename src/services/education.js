@@ -1,7 +1,7 @@
 import { apiClient } from "./config";
 
-export const apiGetEducation = async(payload) =>{
-    return apiClient.get("/education" , payload)
+export const apiGetEducation = async() =>{
+    return apiClient.get("/education")
 }
 
 export const apiAddEducation = async (payload) => {

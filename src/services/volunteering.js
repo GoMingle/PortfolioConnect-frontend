@@ -1,7 +1,7 @@
 import { apiClient } from "./config";
 
-export const apiGetVolunteering = (payload) =>{
-    return apiClient.get("/volunteering", payload);
+export const apiGetVolunteering = () =>{
+    return apiClient.get("/volunteering", );
 };
 
 export const apiAddVolunteering = async (payload) => {

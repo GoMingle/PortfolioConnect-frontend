@@ -1,8 +1,8 @@
 import { apiClient } from "./config";
 
 
-export const apiGetExperiences = (payload) => {
-    return apiClient.get("/experiences", payload);
+export const apiGetExperiences = () => {
+    return apiClient.get("/experiences");
    };
 
  export const apiAddExperience = async (payload) => {
