@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
+import heroVideo from "../../assets/videos/heroVideo.mov"
 import heroBg from "../../assets/images/heroBg.jpg";
 import Feature from "./components/feature";
+import VideoBg from "./components/videoBg";
 
 const Landing = () => {
   return (
     <div className="relative w-full h-screen">
-      <img className="object-cover w-full h-full brightness-50" src={heroBg} alt="hero background" />
+     <VideoBg/>
+      {/* <img className="object-cover w-full h-full brightness-50" src={heroBg} alt="hero background" /> */}
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white space-y-4 mt-28">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
