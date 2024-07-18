@@ -11,7 +11,7 @@ const Educations = () => {
   return (
     <div className="bg-teal-500 h-full ">
       <PagesLayout 
-      headerText="Educations"
+      headerText="EDUCATION"
       buttonText="Add New Education"
       onClick={() => navigate("/dashboard/educations/add-education")}
       

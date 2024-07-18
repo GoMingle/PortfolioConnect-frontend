@@ -7,7 +7,8 @@ const Experiences = () => {
   const navigate = useNavigate()
   return (
     <div className="bg-teal-500 h-full">
-      <PagesLayout headerText="Experiences" buttonText="Add New Experience" onClick={() => navigate("/dashboard/experiences/add-experience")}>
+      <PagesLayout headerText="EXPERIENCES" buttonText="Add New Experience" onClick={() => navigate("/dashboard/experiences/add-experience")}>
+        
         <div className="grid grid-cols-1 gap-6 text-gray-900 " >
           {K.EXPERIENCES.map(({ name, role, responsibility, location, startDate, endDate }, index) => (
             <div key={index} className=" bg-white  shadow-md rounded-xl flex flex-col p-5">

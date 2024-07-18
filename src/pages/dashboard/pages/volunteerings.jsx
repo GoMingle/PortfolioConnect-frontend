@@ -8,7 +8,7 @@ const Volunteerings = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-teal-500 h-full">
-      <PagesLayout headerText="Volunteerings" buttonText="Add New Volunteering" onClick={() => navigate("/dashboard/volunteerings/add-volunteering")}>
+      <PagesLayout headerText="VOLUNTEERINGS" buttonText="Add New Volunteering" onClick={() => navigate("/dashboard/volunteerings/add-volunteering")}>
 
       <div className="grid grid-cols-1 gap-6  " >
           {K.VOLUNTEERINGS.map(({ organization, description, skills, responsibility, startDate, endDate }, index) => (
