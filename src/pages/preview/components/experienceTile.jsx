@@ -19,7 +19,7 @@ const ExperienceTile = ({ companyName, responsibility, role, startDate, endDate}
           ease: "easeIn",
           // duration: 1
       }}
-      className="group flex flex-col items-center group bg-teal-500 rounded-[15px] shadow-2xl p-12 overflow-hidden ml-56 mr-56 hover:bg-white cursor-pointer" onClick={toggleExpansion}>
+      className="group flex flex-col items-center group bg-teal-500 rounded-[15px] shadow-2xl p-12 ml-56 mr-56 hover:bg-white cursor-pointer" onClick={toggleExpansion}>
         <span
           // initial={{ y: 100, opacity: 0 }}
           // whileInView={{ y: 0, opacity: 1 }}

@@ -4,13 +4,13 @@
 
 
 .slick-prev:before, .slick-next:before {
-    color: black; /* Customize the color of the arrows */
+    color: black; 
   }
   
   .slick-dots li button:before {
-    color: black; /* Customize the color of the dots */
+    color: black; 
   }
   
   .slick-dots li.slick-active button:before {
-    color: teal; /* Customize the color of the active dot */
+    color: teal; 
   }

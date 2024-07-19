@@ -2,11 +2,11 @@ import { HandHeartIcon } from 'lucide-react';
 
 const VolunteeringCard = ({ organization, description, responsibility, startDate, endDate }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 mx-auto">
+    <div className="mt-20 mb-10 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 mx-auto">
       <div className="flex justify-center">
-        <div className="bg-green-100 p-4 rounded-full">
+        {/* <div className="bg-green-100 p-4 rounded-full">
           <HandHeartIcon size={32} className="text-teal-500" />
-        </div>
+        </div> */}
       </div>
       <div className="p-6">
         <h4 className="font-semibold text-lg text-center">{organization}</h4>

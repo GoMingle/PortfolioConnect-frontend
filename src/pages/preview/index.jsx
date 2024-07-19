@@ -15,7 +15,12 @@ import VolunteeringCard from "./components/volunteeringCard"
 import EducationTile from "./components/educationTile"
 import Bio from "./components/bio"
 import AchievementCard from "./components/achievementCard";
-import cv from "../../assets/pdf/cv.pdf"
+import cv from "../../assets/pdf/cv.pdf";
+import awardOne from "../../assets/images/awardOne.png"
+import awardTwo from "../../assets/images/awardTwo.png"
+import awardThree from "../../assets/images/awardThree.jpg"
+import { LayoutListIcon } from "lucide-react";
+import Footer from "../../components/footer";
 
 
 
@@ -69,10 +74,26 @@ const Preview = () => {
         />
       </div>
 
-      <PreviewSkill />
+      <div className="mt-20 p-24 bg-gradient-to-r from-gray-900 to-teal-500">
+        <div className="text-center mb-8">
+          <h2 className="text-6xl font-bold text-white">Skills</h2>
+        </div>
+        <div className="flex flex-row justify-center gap-8">
+          <PreviewSkill name="React Native" levelOfProficiency="Beginner" />
+          <PreviewSkill name="Figma" levelOfProficiency="Intermediate" />
+          <PreviewSkill name="Photoshop" levelOfProficiency="Advanced" />
+          <PreviewSkill name="Another Skill" levelOfProficiency="Expert" />
+        </div>
+      </div>
 
-      <div className="text-center mt-40 overflow-hidden">
-        <h3 className="text-4xl mb-6">My Experience</h3>
+
+      <div className="text-center mt-40">
+        <div className="mb-8">
+          <h2 className="text-4xl font-bold text-gray-900">
+            Experience
+          </h2>
+        </div>
+
         <div className="flex flex-col gap-[13px] group">
           <ExperienceTile
             companyName="Company Y - San Francisco, CA | "
@@ -98,8 +119,12 @@ const Preview = () => {
         </div>
       </div>
 
-      <div className="mt-32 bg-gray-50 min-h-screen flex flex-col items-center shadow-md overflow-hidden">
-        <h3 className="text-center text-4xl font-semibold mb-8">Projects</h3>
+      <div className="mt-28 bg-gray-50 flex flex-col items-center shadow-sm">
+        <div className="mt-36">
+          <h2 className="text-4xl font-bold text-gray-900">
+            Projects
+          </h2>
+        </div>
         <div className="w-full">
           <Slider {...settings}>
             <div className="p-2">
@@ -178,8 +203,12 @@ const Preview = () => {
         </div>
       </div>
 
-      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center overflow-hidden mt-16">
-        <h3 className="text-center text-4xl font-semibold pb-14">Volunteering</h3>
+      <div className="p-8 bg-gray-50 flex flex-col items-center overflow-hidden mt-16 mb-14">
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-gray-900">
+            Volunteering
+          </h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <VolunteeringCard
             organization="Volunteer One"
@@ -214,7 +243,11 @@ const Preview = () => {
 
       <div className="py-12 bg-gray-100 overflow-hidden mt-1">
         <div className="container mx-auto">
-          <h3 className="text-center text-4xl font-semibold mb-8">Education</h3>
+          <div className="m-8">
+            <h2 className="text-4xl font-bold text-center text-gray-900">
+              Education
+            </h2>
+          </div>
           <div className="relative">
             <EducationTile
               schoolName="Mest Africa"
@@ -236,11 +269,25 @@ const Preview = () => {
         </div>
       </div>
 
-      <div className="p-8 bg-gray-50 min-h-screen flex flex-col items-center overflow-hidden mt-16">
+      <div className="p-8 bg-white min-h-screen flex flex-col items-center overflow-hidden mt-16">
         <h3 className="text-center text-4xl font-semibold pb-14">Achievement</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AchievementCard
-            img={cv}
+            image={awardThree}
+            Award="Web Development"
+            nameOfInstitution="IBM"
+            description="Certified by IBM."
+            date="18th July, 2024"
+          />
+          <AchievementCard
+            image={awardOne}
+            Award="Web Development"
+            nameOfInstitution="IBM"
+            description="Certified by IBM."
+            date="18th July, 2024"
+          />
+          <AchievementCard
+            image={awardTwo}
             Award="Web Development"
             nameOfInstitution="IBM"
             description="Certified by IBM."
@@ -248,6 +295,8 @@ const Preview = () => {
           />
         </div>
       </div>
+
+      <Footer/>
     </>
   )
 }
