@@ -8,14 +8,10 @@ export default {
 
    OVERVIEW: [
 
-      {
-         icon: <UserRound />,
-         text: "UserProfile",
-         total: 1,
-      },
+      
       {
          icon: <GraduationCap />,
-         text: "Educations",
+         text: "Education",
          total: 3,
       },
       {
@@ -190,7 +186,7 @@ export default {
     PROJECTS: [
       {
          projectName: 'E-commerce Platform',
-         image: {ecommerceImage},
+         image: ecommerceImage,
          description:  'A full-featured e-commerce platform with user authentication, product management, and payment processing.',
          contributors: "ABC",
          nameOfInstitution: "MEST Africa",
@@ -201,7 +197,7 @@ export default {
       },
       {
          projectName: 'Blog Platform',
-         image: {blogImage},
+         image: blogImage,
          description:   'A blog platform where users can create, edit, and delete posts, and leave comments.',
          contributors: "XYZ",
          nameOfInstitution: "Mastercard Foundation",
@@ -215,7 +211,7 @@ export default {
     ACHIEVEMENTS:[
       {
          award: 'Top Developer Award',
-         image: {employeeImage}, 
+         image: employeeImage, 
          description:  'Recognized as the top developer in my company for outstanding performance and contributions to key projects.',
          date: 'June 2023',
          nameOfInstitution: 'MEST'
@@ -223,7 +219,7 @@ export default {
       },
       {
          award: 'Hackathon Winner',
-         image: {hackathonImage},
+         image: hackathonImage,
          description:   'Led a team to victory in a national hackathon, developing an innovative solution for waste management.',
          date:  'December 2022',
          nameOfInstitution: "MNOP"
@@ -231,7 +227,7 @@ export default {
       },
       {
          award: 'Certified React Developer',
-         image: {certifiedImage},
+         image: certifiedImage,
          description:  'Earned the React Developer Certification from a reputable online learning platform.',
          date: 'March 2022',
          nameOfInstitution: 'UVWX'
@@ -239,7 +235,7 @@ export default {
       },
       {
          award: 'Published Author',
-         image: {researchImage},
+         image: researchImage,
          description:   'Published an article on web development best practices in a well-known tech magazine.',
          date: 'September 2021',
          nameOfInstitution: 'EFGH'

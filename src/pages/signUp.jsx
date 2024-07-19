@@ -103,7 +103,7 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-teal-400 to-gray-900  ">
+      <div className="flex items-center justify-center min-h-screen   ">
       <video
         autoPlay
         loop
@@ -113,7 +113,7 @@ const SignUp = () => {
         <source src={signupVideoTwo} type="video/mp4" />
         
       </video>
-        <div className="w-full max-w-md p-8 space-y-6 bg-teal-500 rounded-lg shadow-md relative">
+        <div className="w-full max-w-md p-8 space-y-6 bg-gray-100 rounded-lg shadow-md relative ">
           <h2 className="text-2xl font-bold text-center">Create Account</h2>
 
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>

@@ -4,7 +4,7 @@ const PageLoader = () => {
   return (
     <div className="h-s flex items-center justify-center">
          <FallingLines
-                color="#27AD9F"
+                color="#1F2937"
                 width="50"
                 visible={true}
                 ariaLabel="falling-circles-loading"

@@ -6,7 +6,8 @@ import researchImage from "../assets/images/researchImage.jpg";
 import ecommerceImage from "../assets/images/ecommerceImage.jpg";
 import blogImage from "../assets/images/blogImage.jpg";
 import heroBg from "../assets/images/heroBg.jpg";
+import noData from "../assets/images/noData.svg";
 
-export {employeeImage, hackathonImage, certifiedImage, researchImage, ecommerceImage, blogImage, heroBg};
+export {employeeImage, hackathonImage, certifiedImage, researchImage, ecommerceImage, blogImage, heroBg,noData};
 
 
