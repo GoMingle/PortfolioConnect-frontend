@@ -57,7 +57,7 @@ const Experiences = () => {
               {
                 experiences.length == 0 ?  <div className="flex flex-col items-center gap-y-3 justify-center">
                 <img src={noData} alt="no data" className="w-56" />
-                <p> No Experience added yet</p>
+                <p className="font-semibold"> No Experience added yet</p>
               </div> :
                  <div className="grid grid-cols-1 gap-6 text-gray-900 " >
                 {experiences.map(({ name, role, responsibility, location, startDate, endDate, id }, index) => (

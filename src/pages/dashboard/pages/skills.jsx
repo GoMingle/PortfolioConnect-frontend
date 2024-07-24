@@ -1,12 +1,13 @@
 import { Edit, TrashIcon } from "lucide-react";
 import PagesLayout from "../layout/pagesLayout";
-import K from "../../../constants";
+
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { apiDeleteSkill, apiGetSkills } from "../../../services/skills";
 import PageLoader from "../../../components/pageLoader";
 import { toast } from "react-toastify";
 import Loader from "../../../components/loader";
+import { noData } from "../../../assets";
 
 
 
@@ -50,7 +51,11 @@ const Skills = () => {
           isLoading ? <PageLoader /> :
             <div>
               {
-                skills.length == 0 ? <p>No skill added yet</p> : 
+                skills.length == 0 ? 
+                <div className="flex flex-col items-center gap-y-3 justify-center">
+                  <img src= {noData} alt="No Data" className="w-56" />
+                  <p className="font-semibold ">No skill added yet</p>
+                </div>  : 
                 <div className="grid grid-cols-4 gap-6 " >
                   {skills.map(({ name, levelOfProficiency, id }, index) => (
                     <div key={index} className=" bg-white  shadow-md rounded-xl flex flex-col p-5">
