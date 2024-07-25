@@ -1,50 +1,86 @@
-import { AwardIcon, BadgeCheckIcon, Facebook, Github, GraduationCap, Instagram, Layers3Icon, LayoutListIcon, Linkedin, PanelsTopLeftIcon, SquareSplitHorizontalIcon, Twitter, UserRound, FilePlus2, Share2Icon, ViewIcon } from "lucide-react";
+import { AwardIcon, BadgeCheckIcon, Facebook, Github, GraduationCap, Instagram, Layers3Icon, LayoutListIcon, Linkedin, PanelsTopLeftIcon, SquareSplitHorizontalIcon, Twitter, UserRound, FilePlus2, Share2Icon, ViewIcon, BookText, FolderKanban, BriefcaseBusiness, Award, LayoutDashboard} from "lucide-react";
+import { blogImage, certifiedImage, ecommerceImage, employeeImage, hackathonImage, researchImage } from "../assets";
+
+
 
 
 export default {
 
-   OVERVIEW: [
-
+   NAVLINKS: [
       {
-         icon: <UserRound />,
-         text: "UserProfile",
-         total: 1,
+        icon: <LayoutDashboard/>,
+        text: "Overview",
+        link: "/dashboard",
       },
       {
+        icon: <BookText />,
+        text: "Skills",
+        link: "/dashboard/skills",
+      },
+      {
+        icon: <FolderKanban />,
+        text: "Projects",
+        link: "/dashboard/projects",
+      },
+      {
+        icon: <BriefcaseBusiness />,
+        text: "Experiences",
+        link: "/dashboard/experiences",
+      },
+      {
+        icon: <Award />,
+        text: "Achievements",
+        link: "/dashboard/achievements",
+      },
+      {
+         icon: <GraduationCap/>,
+         text: "Education",
+         link: "/dashboard/education",
+      },
+      {
+         icon: <SquareSplitHorizontalIcon/>,
+         text:"Volunteering",
+         link: "/dashboard/volunteering",
+      },
+    ],
+
+
+
+
+
+   OVERVIEW: [
+      
+      {
          icon: <GraduationCap />,
-         text: "Educations",
-         total: 3,
+         text: "Education",
+         id: "education",
       },
       {
          icon: <LayoutListIcon />,
          text: "Skills",
-         total: 7,
+         id: "skills",
       },
       {
          icon: <Layers3Icon />,
          text: "Experiences",
-         total: 5,
+         id: "expereinces",
       },
       {
          icon: <AwardIcon />,
          text: "Achievements",
-         total: 4,
+         id: "achievements",
       },
       {
          icon: <PanelsTopLeftIcon />,
          text: "Projects",
-         total: 2,
+         id: "projects",
       },
       {
          icon: <SquareSplitHorizontalIcon />,
          text: "Volunteering",
-         total: 4,
+         id: "volunteering",
       },
-      {
-         icon: <BadgeCheckIcon />,
-         text: "Socials",
-         total: 5,
-      },
+      
    ],
    EDUCATIONS: [
       {
@@ -184,102 +220,67 @@ export default {
       },
    ],
 
-   //  PROJECTS: [
-   //    {
-   //       projectName: 'E-commerce Platform',
-   //       image:
-   //       description:  'A full-featured e-commerce platform with user authentication, product management, and payment processing.',
-   //       contributors: "ABC",
-   //       nameOfInstitution:
-   //       startDate:
-   //       endDate:
-   //       link: 'https://github.com/yourusername/e-commerce-platform',
-
-   //    },
-   //    {
-   //       projectName: 'Blog Platform',
-   //       image:
-   //       description:   'A blog platform where users can create, edit, and delete posts, and leave comments.',
-   //       contributors: "XYZ",
-   //       nameOfInstitution:
-   //       startDate:
-   //       endDate:
-   //       link: 'https://github.com/yourusername/blog-platform',
-
-   //    }
-   //  ],
-
-   //  ACHIEVEMENTS:[
-   //    {
-   //       award: 'Top Developer Award',
-   //       img: employeeImage, 
-   //       description:  'Recognized as the top developer in my company for outstanding performance and contributions to key projects.',
-   //       date: 'June 2023',
-   //       nameOfInstitution: 'MEST'
-
-   //    },
-   //    {
-   //       award: 'Hackathon Winner',
-   //       img: hackathonImage,
-   //       description:   'Led a team to victory in a national hackathon, developing an innovative solution for waste management.',
-   //       date:  'December 2022',
-   //       nameOfInstitution: "MNOP"
-
-   //    },
-   //    {
-   //       award: 'Certified React Developer',
-   //       img: certifiedImage,
-   //       description:  'Earned the React Developer Certification from a reputable online learning platform.',
-   //       date: 'March 2022',
-   //       nameOfInstitution: 'UVWX'
-
-   //    },
-   //    {
-   //       award: 'Published Author',
-   //       img: researchImage,
-   //       description:   'Published an article on web development best practices in a well-known tech magazine.',
-   //       date: 'September 2021',
-   //       nameOfInstitution: 'EFGH'
-
-   //    },
-   //  ],
-
-   SOCIALS: [
+    PROJECTS: [
       {
-         name: 'GitHub',
-         Url: 'https://github.com/yourusername',
-         icon: <Github />,
-
+         projectName: 'E-commerce Platform',
+         image: ecommerceImage,
+         description:  'A full-featured e-commerce platform with user authentication, product management, and payment processing.',
+         contributors: "ABC",
+         nameOfInstitution: "MEST Africa",
+         startDate: "April 2022",
+         endDate: "December 2022",
+         link: 'https://github.com/yourusername/e-commerce-platform',
 
       },
       {
-         name: 'LinkedIn',
-         Url: 'https://www.linkedin.com/in/yourusername/',
-         icon: <Linkedin />,
+         projectName: 'Blog Platform',
+         image: blogImage,
+         description:   'A blog platform where users can create, edit, and delete posts, and leave comments.',
+         contributors: "XYZ",
+         nameOfInstitution: "Mastercard Foundation",
+         startDate: "June 2020",
+         endDate: "March 2021",
+         link: 'https://github.com/yourusername/blog-platform',
 
+      }
+    ],
+
+    ACHIEVEMENTS:[
+      {
+         award: 'Top Developer Award',
+         image: employeeImage, 
+         description:  'Recognized as the top developer in my company for outstanding performance and contributions to key projects.',
+         date: 'June 2023',
+         nameOfInstitution: 'MEST'
 
       },
       {
-         name: 'Twitter',
-         Url: 'https://twitter.com/yourusername',
-         icon: <Twitter />,
+         award: 'Hackathon Winner',
+         image: hackathonImage,
+         description:   'Led a team to victory in a national hackathon, developing an innovative solution for waste management.',
+         date:  'December 2022',
+         nameOfInstitution: "MNOP"
 
       },
       {
-         name: 'Instagram',
-         Url: 'https://www.instagram.com/yourusername/',
-         icon: <Instagram />,
-
+         award: 'Certified React Developer',
+         image: certifiedImage,
+         description:  'Earned the React Developer Certification from a reputable online learning platform.',
+         date: 'March 2022',
+         nameOfInstitution: 'UVWX'
 
       },
       {
-         name: 'Facebook',
-         Url: 'https://www.facebook.com/yourusername',
-         icon: <Facebook />,
-
+         award: 'Published Author',
+         image: researchImage,
+         description:   'Published an article on web development best practices in a well-known tech magazine.',
+         date: 'September 2021',
+         nameOfInstitution: 'EFGH'
 
       },
-   ],
+    ],
+
+ 
    FEATURE: [
       {
          title: "Create portfolio",

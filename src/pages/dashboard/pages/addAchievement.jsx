@@ -1,55 +1,53 @@
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { apiAddAchievement } from "../../../services/achievements";
+import Loader from "../../../components/loader";
+import { toast } from "react-toastify";
 
 const AddAchievement = () => {
 
-    const [achievements, setAchievements] = useState([{
-        award: '',
-        description: '',
-        image: '',
-        location: '',
-        date: '',
-        institution: ''
-      }]);
-    
-      const handleChange = (index, event) => {
-        const { name, value } = event.target;
-        const newAchievements = [...achievements];
-        newAchievements[index][name] = value;
-        setAchievements(newAchievements);
-      };
-    
-      const handleAddAchievement = () => {
-        setAchievements([...achievements, {
-          award: '',
-          description: '',
-          image: '',
-          location: '',
-          date: '',
-          institution: ''
-        }]);
-      };
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Achievements Data:', achievements);
-      };
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const[isSubmitting, setIsSubmitting] = useState(false);
+
+   
+      
+    const onSubmit = async(data) => {
+      console.log(data)
+      setIsSubmitting(true);
+      try {
+        const res = await apiAddAchievement({
+          award: data.award,
+          description: data.description,
+          image: data.image,
+          date: data.date,
+          nameOfInstitution: data.nameOfInstitution,
+        });
+        console.log(res.data);
+        toast.success(res.data.message);
+      } catch (error){
+        console.log(error) ;
+        toast.error("An error occured")
+        
+      } finally{
+        setIsSubmitting(false)
+      }
+    };
   return(
     <div className="bg-gray-900 h-full">
         <div className="bg-transparent p-6  max-w-lg mx-auto">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-xl font-bold text-gray-400 text-center mt-8 mb-4">Achievement</h2>
-        {achievements.map((achievement, index) => (
-          <div key={index} className="mb-4">
+        
+          <div className="mb-4">
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
                 Award
               </label>
               <input
                 type="text"
-                name="award"
-                value={achievement.award}
-                onChange={(e) => handleChange(index, e)}
+                id="award"
+                {...register("award", {required: "Award is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -58,9 +56,9 @@ const AddAchievement = () => {
                 Description
               </label>
               <textarea
-                name="description"
-                value={achievement.description}
-                onChange={(e) => handleChange(index, e)}
+                id="description"
+                type="text"
+                {...register("description", {required: "Description is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -70,8 +68,8 @@ const AddAchievement = () => {
               </label>
               <input
                 type="file"
-                name="image"
-                onChange={(e) => handleChange(index, e)}
+                id="image"
+                {...register("image", {required: "Image is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -81,9 +79,8 @@ const AddAchievement = () => {
               </label>
               <input
                 type="text"
-                name="location"
-                value={achievement.location}
-                onChange={(e) => handleChange(index, e)}
+                id="location"
+                {...register("location", {required: "Location is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -93,9 +90,8 @@ const AddAchievement = () => {
               </label>
               <input
                 type="date"
-                name="date"
-                value={achievement.date}
-                onChange={(e) => handleChange(index, e)}
+                id="date"
+                {...register("date", {required: "Date is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -105,32 +101,27 @@ const AddAchievement = () => {
               </label>
               <input
                 type="text"
-                name="institution"
-                value={achievement.institution}
-                onChange={(e) => handleChange(index, e)}
+                id="institution"
+                {...register("institution", {required: "Institution is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
           </div>
-        ))}
+      
         <div className="flex gap-28">
         <div className="mb-4">
           <button
-            type="button"
-            onClick={handleAddAchievement}
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
-          >
-            Add Achievement
-          </button>
-        </div>
-        <div className="flex items-center justify-between mb-4">
-          <button
             type="submit"
+            
             className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
           >
-            Save Achievement
+             {
+              isSubmitting? <Loader/> : "Add Achievement"
+            }
+            
           </button>
         </div>
+       
         </div>
       </form>
     </div>

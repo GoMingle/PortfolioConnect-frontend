@@ -1,55 +1,54 @@
-
-
+import { useForm } from "react-hook-form";
+import Loader from "../../../components/loader";
+import { apiAddEducation } from "../../../services/education";
+import { toast } from "react-toastify";
 import { useState } from "react";
+
 const AddEducation = () => {
 
-    const [educations, setEducations] = useState([{
-        schoolName: '',
-        program: '',
-        qualification: '',
-        location: '',
-        startDate: '',
-        endDate: ''
-      }]);
-    
-      const handleChange = (index, event) => {
-        const { name, value } = event.target;
-        const newEducations = [...educations];
-        newEducations[index][name] = value;
-        setEducations(newEducations);
-      };
-    
-      const handleAddEducation = () => {
-        setEducations([...educations, {
-          schoolName: '',
-          program: '',
-          qualification: '',
-          location: '',
-          startDate: '',
-          endDate: ''
-        }]);
-      };
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Education Data:', educations);
-      };
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const[isSubmitting, setIsSubmitting] = useState(false);
+
+
+  const onSubmit = async(data) => {
+    console.log(data)
+    setIsSubmitting(true);
+    try {
+      const res = await apiAddEducation({
+        schoolName: data.schoolName,
+        program: data.program,
+        qualification: data.qualification,
+        location: data.location,
+        startDate: data.startDate,
+        endDate: data.endDate,
+      });
+      console.log(res.data);
+      toast.success(res.data.message);
+    } catch (error){
+      console.log(error) ;
+      toast.error("An error occured")
+      
+    } finally{
+      setIsSubmitting(false)
+    }
+  };
+
+ 
   return (
     <div className="bg-gray-900 h-full">
         <div className="bg-transparent p-6  max-w-lg mx-auto">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-xl font-bold text-gray-400 text-center mb-4 mt-8">Education</h2>
-        {educations.map((education, index) => (
-          <div key={index} className="mb-4">
+        
+          <div  className="mb-4">
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
                 School Name
               </label>
               <input
                 type="text"
-                name="schoolName"
-                value={education.schoolName}
-                onChange={(e) => handleChange(index, e)}
+                id="schoolName"
+                {...register("schoolName", {required: "Name of School is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -59,9 +58,10 @@ const AddEducation = () => {
               </label>
               <input
                 type="text"
-                name="program"
-                value={education.program}
-                onChange={(e) => handleChange(index, e)}
+                id="program"
+                {...register("program", {required: "Program is required"})}
+
+                
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -71,9 +71,9 @@ const AddEducation = () => {
               </label>
               <input
                 type="text"
-                name="qualification"
-                value={education.qualification}
-                onChange={(e) => handleChange(index, e)}
+                id="qualification"
+                {...register("qualification", {required: "Qualification is required"})}
+                
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -83,9 +83,10 @@ const AddEducation = () => {
               </label>
               <input
                 type="text"
-                name="location"
-                value={education.location}
-                onChange={(e) => handleChange(index, e)}
+                id="location"
+                {...register("location", {required: "Location is required"})}
+
+               
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -95,9 +96,8 @@ const AddEducation = () => {
               </label>
               <input
                 type="date"
-                name="startDate"
-                value={education.startDate}
-                onChange={(e) => handleChange(index, e)}
+                id="startDate"
+                {...register("startDate", {required: "Start Date  is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -107,34 +107,29 @@ const AddEducation = () => {
               </label>
               <input
                 type="date"
-                name="endDate"
-                value={education.endDate}
-                onChange={(e) => handleChange(index, e)}
+                id="endDate"
+                {...register("endDate", {required: "End Date is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
           </div>
-        ))}
+         
         <div className="flex gap-40 ">
         <div className="mb-4 ">
         
           <button
-            type="button"
-            onClick={handleAddEducation}
+            type="submit"
+            
             className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Add Education
+          {
+            isSubmitting? <Loader/> : "Add Education"
+          }
+            
           </button>
           
         </div>
-        <div className="flex items-center justify-between mb-4 ">
-          <button
-            type="submit"
-            className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Save Education
-          </button>
-        </div>
+        
         </div>
       </form>
     </div>

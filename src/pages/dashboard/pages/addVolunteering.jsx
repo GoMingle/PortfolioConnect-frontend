@@ -1,55 +1,55 @@
-
+import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { apiAddVolunteering } from "../../../services/volunteering";
+import Loader from "../../../components/loader";
+
+
 const AddVolunteering = () => {
 
-    const [volunteerings, setVolunteerings] = useState([{
-        organization: '',
-        description: '',
-        skills: '',
-        responsibility: '',
-        startDate: '',
-        endDate: ''
-      }]);
-    
-      const handleChange = (index, event) => {
-        const { name, value } = event.target;
-        const newVolunteerings = [...volunteerings];
-        newVolunteerings[index][name] = value;
-        setVolunteerings(newVolunteerings);
-      };
-    
-      const handleAddVolunteering = () => {
-        setVolunteerings([...volunteerings, {
-          organization: '',
-          description: '',
-          skills: '',
-          responsibility: '',
-          startDate: '',
-          endDate: ''
-        }]);
-      };
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Volunteering Data:', volunteerings);
-      };
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const[isSubmitting, setIsSubmitting] = useState(false);
+
+   
+      
+    const onSubmit = async(data) => {
+      console.log(data)
+      setIsSubmitting(true);
+      try {
+        const res = await apiAddVolunteering({
+          organization: data.organization,
+          description: data.description,
+          skills: data.skills,
+          responsibility: data.responsibility,
+          startDate: data.startDate,
+          endDate: data.endDate,
+        });
+        console.log(res.data);
+        toast.success(res.data.message);
+      } catch (error){
+        console.log(error) ;
+        toast.error("An error occured")
+        
+      } finally{
+        setIsSubmitting(false)
+      }
+    };
+
     
   return (
     <div className="bg-gray-900 h-full">
       <div className="bg-transparent p-6 max-w-lg mx-auto">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-xl font-bold text-gray-400 mb-4 mt-8 text-center">Volunteering</h2>
-        {volunteerings.map((volunteering, index) => (
-          <div key={index} className="mb-4">
+        
+          
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
                 Organization
               </label>
               <input
                 type="text"
-                name="organization"
-                value={volunteering.organization}
-                onChange={(e) => handleChange(index, e)}
+                id="organization"
+                {...register("organization", {required: "Organization is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -57,12 +57,16 @@ const AddVolunteering = () => {
               <label className="block text-gray-400 text-sm font-bold mb-2">
                 Description
               </label>
-              <textarea
-                name="description"
-                value={volunteering.description}
-                onChange={(e) => handleChange(index, e)}
+            
+                <input
+                type="text"
+                id="description"
+                {...register("description", {required: "Description is required"})}
+                
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
+                
+                />
+            
             </div>
             <div className="mb-2">
               <label className="block text-gray-400 text-sm font-bold mb-2">
@@ -70,9 +74,8 @@ const AddVolunteering = () => {
               </label>
               <input
                 type="text"
-                name="skills"
-                value={volunteering.skills}
-                onChange={(e) => handleChange(index, e)}
+                id="skills"
+                {...register("skills", {required: "Description is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -81,9 +84,10 @@ const AddVolunteering = () => {
                 Responsibility
               </label>
               <textarea
-                name="responsibility"
-                value={volunteering.responsibility}
-                onChange={(e) => handleChange(index, e)}
+                type = "text"
+                id="responsibility"
+                
+                {...register("responsibility", {required: "Responsibility is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -93,9 +97,9 @@ const AddVolunteering = () => {
               </label>
               <input
                 type="date"
-                name="startDate"
-                value={volunteering.startDate}
-                onChange={(e) => handleChange(index, e)}
+                id="startDate"
+                {...register("startDate", {required: "Start Date is required "})}
+              
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -105,31 +109,28 @@ const AddVolunteering = () => {
               </label>
               <input
                 type="date"
-                name="endDate"
-                value={volunteering.endDate}
-                onChange={(e) => handleChange(index, e)}
+                id="endDate"
+                {...register("endDate", {required: "End Date is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
-          </div>
-        ))}
+          
+        
         <div className="flex gap-32">
         <div className="mb-4">
-          <button
-            type="button"
-            onClick={handleAddVolunteering}
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
-          >
-            Add Volunteering
-          </button>
-        </div>
-        <div className="flex items-center justify-between mb-4">
           <button
             type="submit"
             className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
           >
-            Save Volunteering
+          
+            {
+              isSubmitting? <Loader/> : "Add Volunteering"
+            }
+
           </button>
+        </div>
+        <div className="flex items-center justify-between mb-4">
+        
         </div>
         </div>
       </form>
