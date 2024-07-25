@@ -14,12 +14,13 @@ const LogIn = () => {
 
   console.log(isSubmitting);
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ reValidateMode: "onBlur", mode: "all" });
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   const onSubmit = async (data) => {
     console.log(data);
     setIsSubmitting(true);
@@ -29,10 +30,10 @@ const LogIn = () => {
         password: data.password
       })
       console.log("Response: ", res.data);
+
       localStorage.setItem("accessToken", res.data.acessToken)
       toast.success(res.data.message);
       setTimeout(() => { navigate("/dashboard") }, 5000);
-
 
     } catch (error) {
       console.log(error)
