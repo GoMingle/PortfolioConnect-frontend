@@ -18,8 +18,9 @@ import AddProject from './pages/dashboard/pages/addProject'
 import AddVolunteering from './pages/dashboard/pages/addVolunteering'
 import Volunteerings from './pages/dashboard/pages/volunteerings'
 import Overview from './pages/dashboard/pages/overview'
+import { apiGetUserDetails } from "./services/preview"
 import UserProfile from './pages/dashboard/pages/userProfile'
-import { apiGetUserDetails } from "./services/preview";
+import { apiGetUserDetails } from "./services/preview"
 import AuthLayout from './pages/dashboard/layout/authLayout'
 
 
@@ -112,7 +113,23 @@ const router = createBrowserRouter([
       },
     ]
    },
-  {path: '/preview', element: <Preview/>},
+
+  // {path: '/preview', element: <Preview/>},
+  {
+    path: "preview/:username",
+    element: <Preview />,
+    loader: async ({ params }) => {
+      const username = params.username;
+      try {
+        const response = await apiGetUserDetails(username);
+        const userProfileData = response?.data.user;
+        return userProfileData;
+      } catch (error) {
+        toast.error("An error occured");
+        return null;
+      }
+    },
+  },
 
   {
     element: <AuthLayout />,
@@ -127,8 +144,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
- 
 
 ])
 
