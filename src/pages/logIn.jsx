@@ -29,6 +29,8 @@ const onSubmit = async(data) => {
       })
       console.log("Response: ", res.data);
       navigate("/dashboard")
+      toast.success(res.data.message);
+      navigate("/dashboard");
       
     } catch (error) {
       console.log(error)
