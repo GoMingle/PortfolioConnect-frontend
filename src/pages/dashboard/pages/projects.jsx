@@ -62,7 +62,7 @@ const Projects = () => {
               {
                 projects.length == 0 ?  <div className="flex flex-col items-center gap-y-3 justify-center">
                 <img src={noData} alt="no data" className="w-56" />
-                <p> No Project added yet</p>
+                <p className="font-semibold"> No Project added yet</p>
               </div> : <div className="grid grid-cols-3 gap-6 text-gray-900 ">
 
                   {projects.map(({ projectName, image, description, contributors, nameOfInstitution, startDate, endDate, link, id }, index) => (

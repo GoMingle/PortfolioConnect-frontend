@@ -12,9 +12,11 @@ export const apiAddProject = async (payload) => {
     return apiClient.post("/project" , payload);
     };
 
-export const apiUpdateProject = async(id) => {
-     return apiClient.patch(`/project/${id}`);
-    };
+
+    export const apiUpdateProject = async (id, payload) => {
+        return apiClient.patch(`/project/${id}`, payload);
+      };
+    
 
     export const apiDeleteProject = async(id) => {
         return apiClient.delete(`/project/${id}`);

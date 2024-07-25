@@ -64,7 +64,7 @@ const Achievements = () => {
               {
                 achievements.length == 0 ? <div className="flex flex-col items-center gap-y-3 justify-center">
                   <img src={noData} alt="no data" className="w-56" />
-                  <p> No Achievement added yet</p>
+                  <p className="font-semibold"> No Achievement added yet</p>
                 </div> : <div className="grid grid-cols-3 gap-6 text-gray-900">
                   {achievements.map(({ award, image, description, date, nameOfInstitution, id }, index) => (
                     <div k={index} className=" bg-white  shadow-md rounded-xl flex flex-col p-8 relative">
