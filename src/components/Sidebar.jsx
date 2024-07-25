@@ -1,5 +1,10 @@
-import { AwardIcon,  BadgeCheckIcon,  GraduationCap,  Layers3Icon,  LayoutListIcon,  LogOutIcon, PanelsTopLeftIcon, SquareGanttChart, SquareSplitHorizontalIcon, UserRound } from "lucide-react"
+import { AwardIcon,  BadgeCheckIcon,  GraduationCap,  Layers3Icon,  LayoutListIcon,  PanelsTopLeftIcon, SquareGanttChart, SquareSplitHorizontalIcon, UserRound } from "lucide-react"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { LogOut } from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
+
+const navigate = useNavigate();
 
 
 const Sidebar = () => {
@@ -30,7 +35,7 @@ const Sidebar = () => {
    <Link to = "/dashboard/educations">
    <div className="text-gray-200 flex  mt-2 ml-11 font-serif font-semibold hover:border-2 border-teal-400 w-40 py-2 pl-3 rounded-xl ">
         <GraduationCap className="size-4 mr-1 mt-1 text-teal-400"/>
-        <h1>Educations</h1>
+        <h1>Education</h1>
     </div>
    </Link>
 
@@ -64,7 +69,7 @@ const Sidebar = () => {
     </Link>
 
     <Link to = "/dashboard/volunteerings">
-    <div className="text-gray-200 flex  mt-2 ml-11 font-serif font-semibold hover:border-2 border-teal-400 w-4o py-2 pl-3 rounded-xl ">
+    <div className="text-gray-200 flex  mt-2 ml-11 font-serif font-semibold hover:border-2 border-teal-400 w-40 py-2 pl-3 rounded-xl ">
         <SquareSplitHorizontalIcon className="size-4 mr-1 mt-1 text-teal-400"/>
         <h1>Volunteering</h1>
     </div>
@@ -78,6 +83,20 @@ const Sidebar = () => {
    </Link>
 
    <Link>
+
+   <NavLink
+            to={link}
+            key={index}
+            className={({ isActive }) =>
+              `flex gap-x-4 items-center hover:bg-pink hover:text-white hover:rounded-md p-2 ${
+                isActive ? "bg-pink text-white" : ""
+              }`
+            }
+            end
+          >
+            <span className="bg-pink text-white p-2 rounded-full">{icon}</span>
+            <span>{text}</span>
+          </NavLink>
    <div>
     <button className=" text-teal-400  bg-white px-7 py-3 rounded-lg ml-9 mt-20 font-bold text-lg">
         Preview
@@ -85,13 +104,23 @@ const Sidebar = () => {
    </div>
    </Link>
 
+   <button
+        className="flex gap-x-4 items-center mt-auto hover:bg-pink hover:text-white hover:rounded-md p-2"
+        onClick={logout}
+      >
+        <span className="bg-pink text-white p-2 rounded-full">
+          <LogOut />
+        </span>
+        <span>Logout</span>
+      </button>
+
    
 
-    <div className="mt-[480px]  text-teal-400 hover:text-white font-semibold flex ml-20  mb-10 mr-5 py-4 pl-4 rounded-lg bg-white ">
+    {/* <div className="mt-[480px]  text-teal-400 hover:text-white font-semibold flex ml-20  mb-10 mr-5 py-4 pl-4 rounded-lg bg-white ">
     <h1>Log Out</h1>
     <LogOutIcon className="size-3"/>
         
-    </div>
+    </div> */}
 
     </div>
     

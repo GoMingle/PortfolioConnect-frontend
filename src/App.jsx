@@ -12,7 +12,7 @@ import Projects from './pages/dashboard/pages/projects'
 
 import Socials from './pages/dashboard/pages/socials'
 import AddEducation from './pages/dashboard/pages/addEducation'
-import Educations from './pages/dashboard/pages/educations'
+import Educations from './pages/dashboard/pages/education'
 
 import AddSkill from './pages/dashboard/pages/addSkill'
 import AddSocial from './pages/dashboard/pages/addSocial'
