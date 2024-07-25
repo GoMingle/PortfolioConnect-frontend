@@ -14,8 +14,8 @@ const SignUp = () => {
   const navigate = useNavigate()
   const [UsernameAvailable, setUsernameAvailable] = useState(false);
   const [usernameNotAvailable, setUsernameNotAvailable] = useState(false);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ reValidateMode: "onBlur", mode: "all" });
+const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const[isUsernameLoading, setIsUsernameLoading] =useState(false);
 
@@ -87,8 +87,8 @@ const SignUp = () => {
     try {
       const res = await apiSignUp(payload);
       console.log(res.data);
-      toast.success(res.data);
-      setTimeout(() => { navigate("/login") }, 5000);
+     toast.success(res.data.message);
+      navigate("/login");
 
     } catch (error) {
       console.log(error);
@@ -212,9 +212,15 @@ const SignUp = () => {
                 id="password"
                 placeholder="password"
                 className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring  focus:ring-teal-400"
-                {
-                ...register("password", { required: "Password is required" })
-                }
+                
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 8,
+                    message: "Password length must be more than 8 characters",
+                  },
+                })}
+
               />
               {errors.password && (
                 <p className="text-red-500">{errors.password.message}</p>
