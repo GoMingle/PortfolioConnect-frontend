@@ -1,3 +1,4 @@
+
 import { useForm } from "react-hook-form";
 import { apiAddSkill } from "../../../services/skills";
 import { useState } from "react";
@@ -89,3 +90,4 @@ const AddSkill = () => {
 }
 
 export default AddSkill;
+

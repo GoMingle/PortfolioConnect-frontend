@@ -63,7 +63,7 @@ const Educations = () => {
         {
           educations.length == 0 ? <div className="flex flex-col items-center gap-y-3 justify-center">
           <img src={noData} alt="no data" className="w-56" />
-          <p> No Achievement added yet</p>
+          <p className="font-semibold"> No Education added yet</p>
         </div> : 
           <div className="grid grid-cols-1 gap-6  ">
           {educations.map(({ Schoolname, program, qualification, location, startDate, endDate, id }, index) => (

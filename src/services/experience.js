@@ -9,10 +9,12 @@ export const apiGetExperiences = () => {
     return apiClient.post("/experiences" , payload);
     };
 
-    export const apiUpdateExperience = async(id) => {
-        return apiClient.patch(`/experiences/${id}`);
-    };
+   
+    export const apiUpdateExperience = async (id, payload) => {
+        return apiClient.patch(`/experience/${id}`, payload);
+      };
+    
 
-    export const apiDeleteExperience = async(id) => {
+     export const apiDeleteExperience = async(id) => {
         return apiClient.delete(`/experiences/${id}`);
     };
