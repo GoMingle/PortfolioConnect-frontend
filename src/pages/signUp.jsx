@@ -85,8 +85,8 @@ const [showPassword, setShowPassword] = useState(false);
     try {
       const res = await apiSignUp(payload);
       console.log(res.data);
-      toast.success(res.data);
-      setTimeout(() => { navigate("/login") }, 5000);
+     toast.success(res.data.message);
+      navigate("/login");
 
     } catch (error) {
       console.log(error);
@@ -201,9 +201,15 @@ const [showPassword, setShowPassword] = useState(false);
                 id="password"
                 placeholder="password"
                 className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring  focus:ring-teal-400"
-                {
-                ...register("password", { required: "Password is required" })
-                }
+                
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 8,
+                    message: "Password length must be more than 8 characters",
+                  },
+                })}
+
               />
               {errors.password && (
                 <p className="text-red-500">{errors.password.message}</p>
