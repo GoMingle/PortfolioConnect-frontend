@@ -9,33 +9,69 @@ import Skills from './pages/dashboard/pages/skills'
 import Achievements from './pages/dashboard/pages/achievements'
 import Experiences from './pages/dashboard/pages/experiences'
 import Projects from './pages/dashboard/pages/projects'
+import AddEducation from './pages/dashboard/pages/addEducation'
+import Educations from './pages/dashboard/pages/education'
+import AddSkill from './pages/dashboard/pages/addSkill'
+import AddAchievement from './pages/dashboard/pages/addAchievement'
+import AddExperience from './pages/dashboard/pages/addExperience'
+import AddProject from './pages/dashboard/pages/addProject'
+import AddVolunteering from './pages/dashboard/pages/addVolunteering'
+import Volunteerings from './pages/dashboard/pages/volunteerings'
+import Overview from './pages/dashboard/pages/overview'
 import UserProfile from './pages/dashboard/pages/userProfile'
-import Socials from './pages/dashboard/pages/socials'
-import Education from './pages/dashboard/pages/education'
-import Volunteering from './pages/dashboard/pages/volunteering'
+import { apiGetUserDetails } from "./services/preview";
+import AuthLayout from './pages/dashboard/layout/authLayout'
 
 
 const router = createBrowserRouter([
   {path:'/', element: <Landing/>},
-  {path:'/login', element: <LogIn/>},
    {path: '/dashboard', element: <DashboardLayout/>,
     children: [
+
       {
-        path: "userprofile",
+        index: true,
+        element: <Overview/>,
+      },
+      {
+        index: "userprofile",
         element: <UserProfile/>,
       },
+      {
+        path: "preview/:username",
+        element: <Preview />,
+        loader: async ({ params }) => {
+          const username = params.username;
+          try {
+            const response = await apiGetUserDetails(username);
+            const userProfileData = response?.data.user;
+            return userProfileData;
+          } catch (error) {
+            toast.error("An error occured");
+            return null;
+          }
+        },
+      },
+      
+      
       {
         path: "skills",
         element: <Skills/>,
       
       },
       {
-        path : "socials",
-        element: <Socials/>,
+        path: "skills/add-skill",
+        element: <AddSkill/>
+
       },
+     
       {
         path: "achievements",
         element: <Achievements/>,
+      },
+      {
+        path: "achievements/add-achievement",
+        element: <AddAchievement/>,
+
       },
     
       {
@@ -43,25 +79,62 @@ const router = createBrowserRouter([
         element: <Experiences/>,
       },
       {
+        path: "experiences/add-experience",
+        element: <AddExperience/>
+
+      },
+      {
         path: "projects",
         element: <Projects/>,
       },
       {
-        path: "education",
-        element: <Education/>,
+        path: "projects/add-project",
+        element: <AddProject/>
+
       },
       {
-        path: "volunteering",
-        element: <Volunteering/>
-      }
+        path: "educations",
+        element: <Educations/>,
+      },
+      {
+        path: "educations/add-education",
+        element: <AddEducation/>
+
+      },
+      {
+        path: "volunteerings",
+        element: <Volunteerings/>,
+      },
+      {
+        path: "volunteerings/add-volunteering",
+        element: <AddVolunteering/>,
+
+      },
     ]
    },
   {path: '/preview', element: <Preview/>},
-  {path: '/signup', element: <SignUp/>}
+
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "login",
+        element: <LogIn/>,
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
+    ],
+  },
+
+ 
 
 ])
 
 function App() {
+
+  
   
 
   return (

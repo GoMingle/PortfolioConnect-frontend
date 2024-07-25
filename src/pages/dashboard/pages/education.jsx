@@ -1,146 +1,112 @@
+import { useNavigate } from "react-router-dom";
+import PagesLayout from "../layout/pagesLayout";
+import K from "../../../constants";
+import {  Blend, Dot, Edit, MapPin, TrashIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { apiDeleteEducation, apiGetEducation } from "../../../services/education";
+import PageLoader from "../../../components/pageLoader";
+import Loader from "../../../components/loader";
+import { toast } from "react-toastify";
+import { noData } from "../../../assets";
 
 
-import { useState } from "react";
-const Education = () => {
 
-    const [educations, setEducations] = useState([{
-        schoolName: '',
-        program: '',
-        qualification: '',
-        location: '',
-        startDate: '',
-        endDate: ''
-      }]);
-    
-      const handleChange = (index, event) => {
-        const { name, value } = event.target;
-        const newEducations = [...educations];
-        newEducations[index][name] = value;
-        setEducations(newEducations);
-      };
-    
-      const handleAddEducation = () => {
-        setEducations([...educations, {
-          schoolName: '',
-          program: '',
-          qualification: '',
-          location: '',
-          startDate: '',
-          endDate: ''
-        }]);
-      };
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Education Data:', educations);
-      };
+const Educations = () => {
+
+  const navigate = useNavigate();
+  const [educations, setEducations] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const fetchEducation = async () => {
+    setIsLoading(true)
+    try {
+      const res = await apiGetEducation();
+      console.log(res.data);
+      setEducations(res.data.education);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleDelete = async(_id) =>{
+    try {
+      const res = await apiDeleteEducation(_id);
+      console.log(res.data)
+      toast.success(res.data.message);
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occured")
+    }
+  }
+
+  useEffect(() => {
+    fetchEducation()
+  }, [])
+  
+
+
+
   return (
-    <div className="bg-gray-900 h-full">
-        <div className="bg-transparent p-6  max-w-lg mx-auto">
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-xl font-bold text-gray-400 text-center mb-4 mt-8">Education</h2>
-        {educations.map((education, index) => (
-          <div key={index} className="mb-4">
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                School Name
-              </label>
-              <input
-                type="text"
-                name="schoolName"
-                value={education.schoolName}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
+    <div className="bg-teal-500 h-full ">
+      <PagesLayout 
+      headerText="EDUCATION"
+      buttonText="Add New Education"
+      onClick={() => navigate("/dashboard/educations/add-education")}
+       >
+
+     {
+       isLoading ? <PageLoader/> : 
+       <div>
+        {
+          educations.length == 0 ? <div className="flex flex-col items-center gap-y-3 justify-center">
+          <img src={noData} alt="no data" className="w-56" />
+          <p className="font-semibold"> No Education added yet</p>
+        </div> : 
+          <div className="grid grid-cols-1 gap-6  ">
+          {educations.map(({ Schoolname, program, qualification, location, startDate, endDate, id }, index) => (
+            <div key={index} className="h-full mt-3 pl-4 shadow-2xl rounded-xl flex flex-col text-gray-900 bg-white">
+               <div className="ml-auto flex gap-x-2 mr-6  ">
+               <button>
+               <Edit className="text-gray-900 size-4 mt-5" />
+               </button>
+                
+                <button onClick={() => handleDelete(id)}>
+               {
+                isDeleting ? <Loader/> :  <TrashIcon className="text-gray-900 size-4 mt-5" />
+               }
+                </button>
+                   
+              </div> 
+              <span className="font-bold text-lg text-gray-800 ml-4">{Schoolname}</span>
+              <span className="mt-2  flex font-medium"><Dot className="text-teal-400 size-7"/>{program}</span>
+              <span className="mt-2 flex font-medium "><Dot  className="text-teal-400 size-7"/>{qualification}</span>
+              <div className="flex flex-row gap-40 mt-10 ml-10  mb-5">
+              <span className="mt-2  flex"><MapPin className="text-teal-400 size-4"/>{location}</span>
+              <span className="mt-2 italic flex"><Blend className="text-teal-400 size-4"/>{startDate}-{endDate}</span>
+              
+              </div>
+             
+   
             </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Program
-              </label>
-              <input
-                type="text"
-                name="program"
-                value={education.program}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Qualification
-              </label>
-              <input
-                type="text"
-                name="qualification"
-                value={education.qualification}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Location
-              </label>
-              <input
-                type="text"
-                name="location"
-                value={education.location}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Start Date
-              </label>
-              <input
-                type="date"
-                name="startDate"
-                value={education.startDate}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                End Date
-              </label>
-              <input
-                type="date"
-                name="endDate"
-                value={education.endDate}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-          </div>
-        ))}
-        <div className="flex gap-40 ">
-        <div className="mb-4 ">
-        
-          <button
-            type="button"
-            onClick={handleAddEducation}
-            className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Add Education
-          </button>
+             
+   
+          )
+   
+          )}
           
+   
         </div>
-        <div className="flex items-center justify-between mb-4 ">
-          <button
-            type="submit"
-            className=" bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Save Education
-          </button>
-        </div>
-        </div>
-      </form>
+        }
+       </div>
+     }
+
+    </PagesLayout>
     </div>
 
-    </div>
   )
 }
 
-export default Education
+export default Educations;

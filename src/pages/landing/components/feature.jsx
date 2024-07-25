@@ -13,7 +13,7 @@ const Feature = () => {
       {K.FEATURE.map((feature, index) => (
         <motion.div
           key={index}
-          className="py-6 px-4 flex flex-col items-center text-center hover:bg-teal-500 "
+          className="py-6 px-4 flex flex-col items-center text-center hover:bg-gray-900 "
           style={{ backgroundColor: feature.bgColor }}
           initial="hidden"
           animate="visible"

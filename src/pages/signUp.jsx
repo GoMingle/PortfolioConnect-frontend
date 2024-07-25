@@ -7,6 +7,7 @@ import { apiCheckUsernameExists, apiSignUp } from "../services/auth";
 import { toast } from "react-toastify";
 import Loader from "../components/loader";
 import { debounce } from "lodash";
+import signupVideoTwo from "../assets/videos/signupVideoTwo.mp4";
 
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,7 +77,8 @@ const [showPassword, setShowPassword] = useState(false);
       userName: data.userName,
       email: data.email,
       password: data.password,
-      confirmedPassword: data.password,
+      confirmPassword: data.password,
+      termsAndConditions: data.terms ? "Accept": "Reject" ,
     };
     if (data.otherNames) {
       payload = { ...payload, otherNames: data.otherNames };
@@ -101,8 +103,17 @@ const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div>
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-teal-400 to-gray-900 ">
-        <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+      <div className="flex items-center justify-center min-h-screen   ">
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 object-cover w-full h-full"
+      >
+        <source src={signupVideoTwo} type="video/mp4" />
+        
+      </video>
+        <div className="w-full max-w-md p-8 space-y-6 bg-gray-100 rounded-lg shadow-md relative ">
           <h2 className="text-2xl font-bold text-center">Create Account</h2>
 
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -259,7 +270,7 @@ const [showPassword, setShowPassword] = useState(false);
             </div>
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white bg-teal-400 rounded-md"
+              className="w-full px-4 py-2 text-black bg-white rounded-md"
             >
               {isSubmitting ? <Loader/> : "SignUp"}
 
@@ -267,7 +278,7 @@ const [showPassword, setShowPassword] = useState(false);
             </button>
           </form>
           <p className="text-center text-sm text-gray-600">
-            Have already an account? <a href="/login" className="text-teal-400 hover:underline">Login here</a>
+            Have already an account? <a href="/login" className="text-white hover:underline">Login here</a>
           </p>
 
         </div>

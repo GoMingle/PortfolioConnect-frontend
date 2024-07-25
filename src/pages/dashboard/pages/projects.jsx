@@ -1,155 +1,107 @@
+import { useNavigate } from "react-router-dom";
+import PagesLayout from "../layout/pagesLayout";
+import { Blend, Edit, TrashIcon } from "lucide-react";
+import K from "../../../constants";
+import { useEffect, useState } from "react";
+import { apiDeleteProject, apiGetProjects } from "../../../services/project";
+import PageLoader from "../../../components/pageLoader";
+import Loader from "../../../components/loader";
+import { toast } from "react-toastify";
+import { noData } from "../../../assets";
 
-import { useState } from "react";
+
 const Projects = () => {
 
-    const [projects, setProjects] = useState([{
-        projectName: '',
-        description: '',
-        contributors: '',
-        skills: '',
-        institution: '',
-        startDate: '',
-        endDate: ''
-      }]);
-    
-      const handleChange = (index, event) => {
-        const { name, value } = event.target;
-        const newProjects = [...projects];
-        newProjects[index][name] = value;
-        setProjects(newProjects);
-      };
-    
-      const handleAddProject = () => {
-        setProjects([...projects, {
-          projectName: '',
-          description: '',
-          contributors: '',
-          skills: '',
-          institution: '',
-          startDate: '',
-          endDate: ''
-        }]);
-      };
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('Projects Data:', projects);
-      };
-    
-  return (
-    <div className="bg-gray-900 h-full">
-        <div className="bg-transparent p-6  max-w-lg mx-auto">
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-xl font-bold text-gray-400 text-center mt-8 mb-4">Project</h2>
-        {projects.map((project, index) => (
-          <div key={index} className="mb-4">
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Project Name
-              </label>
-              <input
-                type="text"
-                name="projectName"
-                value={project.projectName}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Description
-              </label>
-              <textarea
-                name="description"
-                value={project.description}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Contributors
-              </label>
-              <input
-                type="text"
-                name="contributors"
-                value={project.contributors}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Skills
-              </label>
-              <input
-                type="text"
-                name="skills"
-                value={project.skills}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Name of Institution
-              </label>
-              <input
-                type="text"
-                name="institution"
-                value={project.institution}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                Start Date
-              </label>
-              <input
-                type="date"
-                name="startDate"
-                value={project.startDate}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-400 text-sm font-bold mb-2">
-                End Date
-              </label>
-              <input
-                type="date"
-                name="endDate"
-                value={project.endDate}
-                onChange={(e) => handleChange(index, e)}
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:ring  focus:ring-teal-400"
-              />
-            </div>
-          </div>
-        ))}
-        <div className="flex gap-56">
-        <div className="mb-4">
-          <button
-            type="button"
-            onClick={handleAddProject}
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400  text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
-          >
-            Add Project
-          </button>
-        </div>
-        <div className="flex items-center justify-between mb-4">
-          <button
-            type="submit"
-            className="bg-transparent border-2 border-teal-400 hover:bg-teal-400  text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
-          >
-            Save Project
-          </button>
-        </div>
-        </div>
-      </form>
-    </div>
+  const navigate = useNavigate();
+  const [projects, setProjects] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
+  const fetchProjects = async () => {
+    setIsLoading(true)
+    try {
+      const res = await apiGetProjects();
+      console.log(res.data);
+      setProjects(res.data.project);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleDelete = async (_id) => {
+    try {
+      const res = await apiDeleteProject(_id);
+      console.log(res.data)
+      toast.success(res.data.message);
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occured")
+    }
+  }
+
+  useEffect(() => {
+    fetchProjects()
+  }, [])
+
+
+
+
+
+
+  return (
+    <div className="bg-teal-500 h-full">
+      <PagesLayout headerText="PROJECTS"
+        buttonText="Add New Achievement"
+        onClick={() => navigate("/dashboard/projects/add-project")} >
+
+        {
+          isLoading ? <PageLoader /> :
+            <div>
+              {
+                projects.length == 0 ?  <div className="flex flex-col items-center gap-y-3 justify-center">
+                <img src={noData} alt="no data" className="w-56" />
+                <p className="font-semibold"> No Project added yet</p>
+              </div> : <div className="grid grid-cols-3 gap-6 text-gray-900 ">
+
+                  {projects.map(({ projectName, image, description, contributors, nameOfInstitution, startDate, endDate, link, id }, index) => (
+                    <div k={index} className=" bg-white  shadow-md rounded-xl flex flex-col p-8 relative">
+                      <div className="ml-auto flex gap-x-2   absolute right-10 bottom-1 mb-4 ">
+
+                        <button>
+                          <Edit className="text-gray-900 size-4" />
+                        </button>
+                        <button onClick={() => handleDelete(id)}>
+                          {
+                            isDeleting ? <Loader /> : <TrashIcon className="text-gray-900 size-4" />
+                          }
+                        </button>
+                      </div>
+
+                      <span className="font-bold font-sans text-lg text-gray-900 ">{projectName}</span>
+                      <img src={image} alt="image" className="size-48 w-64 shadow-lg rounded-md mt-5" />
+                      <span className="flex  mt-3 ">{description}</span>
+                      <div className="flex gap-10 mt-5 ml-8">
+                        <span className="flex font-thin ">{contributors}</span>
+                        <span className="flex font-thin ">{nameOfInstitution}</span>
+                      </div>
+                      <span className="italic mt-4 flex"><Blend className="text-teal-400 size-4 flex" />{startDate}-{endDate}</span>
+                      <span className="flex mt-5 text-blue-600 hover: underline ">{link}</span>
+
+
+
+                    </div>
+
+                  )
+
+                  )}
+                </div>
+              }
+            </div>
+        }
+
+      </PagesLayout>
     </div>
   )
 }

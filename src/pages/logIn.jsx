@@ -6,6 +6,7 @@ import { apiLogIn } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../components/loader";
+import loginVideo from "../assets/videos/loginVideo.mp4"
 
 const LogIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,14 +14,14 @@ const LogIn = () => {
 
   console.log(isSubmitting);
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm(reValidateMode, "onBlur", mode, "all");
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ reValidateMode: "onBlur", mode: "all" });
 
- 
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   const onSubmit = async (data) => {
     console.log(data);
     setIsSubmitting(true);
@@ -30,9 +31,10 @@ const LogIn = () => {
         password: data.password
       })
       console.log("Response: ", res.data);
-      toast.success(res.data);
-      setTimeout(() => { navigate("/dashboard") }, 5000);
 
+      localStorage.setItem("accessToken", res.data.acessToken)
+      toast.success(res.data.message);
+      setTimeout(() => { navigate("/dashboard") }, 5000);
 
     } catch (error) {
       console.log(error)
@@ -44,8 +46,17 @@ const LogIn = () => {
   };
   return (
     <div>
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-teal-400 to-gray-900 ">
-        <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+      <div className="flex items-center justify-center min-h-screen  ">
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 object-cover w-full h-full"
+      >
+        <source src={loginVideo} type="video/mp4" />
+        
+      </video>
+        <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md relative">
           <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
