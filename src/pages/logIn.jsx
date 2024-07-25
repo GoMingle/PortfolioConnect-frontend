@@ -11,7 +11,7 @@ const LogIn = () => {
 
   console.log(isSubmitting);
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm(reValidateMode, "onBlur", mode, "all");
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ reValidateMode: "onBlur", mode: "all" });
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -19,9 +19,7 @@ const LogIn = () => {
   };
 
  
-
-
-  const onSubmit = async(data) => {
+const onSubmit = async(data) => {
     console.log(data);
     setIsSubmitting(true);
     try {
