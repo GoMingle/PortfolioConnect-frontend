@@ -8,9 +8,11 @@ export const apiAddVolunteering = async (payload) => {
     return apiClient.post("/volunteering" , payload);
     };
 
- export const apiUpdateVolunteering = async(id) => {
-    return apiClient.patch(`/volunteering/${id}`);
-    }; 
+
+    export const apiUpdateVolunteering = async (id, payload) => {
+        return apiClient.patch(`/volunteering/${id}`, payload);
+      };
+    
     
     export const apiDeleteVolunteering = async(id) => {
         return apiClient.delete(`/volunteering/${id}`);

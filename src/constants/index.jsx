@@ -1,4 +1,4 @@
-import { AwardIcon, BadgeCheckIcon, Facebook, Github, GraduationCap, Instagram, Layers3Icon, LayoutListIcon, Linkedin, PanelsTopLeftIcon, SquareSplitHorizontalIcon, Twitter, UserRound, FilePlus2, Share2Icon, ViewIcon } from "lucide-react";
+import { AwardIcon, BadgeCheckIcon, Facebook, Github, GraduationCap, Instagram, Layers3Icon, LayoutListIcon, Linkedin, PanelsTopLeftIcon, SquareSplitHorizontalIcon, Twitter, UserRound, FilePlus2, Share2Icon, ViewIcon, BookText, FolderKanban, BriefcaseBusiness, Award, LayoutDashboard} from "lucide-react";
 import { blogImage, certifiedImage, ecommerceImage, employeeImage, hackathonImage, researchImage } from "../assets";
 
 
@@ -6,44 +6,81 @@ import { blogImage, certifiedImage, ecommerceImage, employeeImage, hackathonImag
 
 export default {
 
-   OVERVIEW: [
+   NAVLINKS: [
+      {
+        icon: <LayoutDashboard/>,
+        text: "Overview",
+        link: "/dashboard",
+      },
+      {
+        icon: <BookText />,
+        text: "Skills",
+        link: "/dashboard/skills",
+      },
+      {
+        icon: <FolderKanban />,
+        text: "Projects",
+        link: "/dashboard/projects",
+      },
+      {
+        icon: <BriefcaseBusiness />,
+        text: "Experiences",
+        link: "/dashboard/experiences",
+      },
+      {
+        icon: <Award />,
+        text: "Achievements",
+        link: "/dashboard/achievements",
+      },
+      {
+         icon: <GraduationCap/>,
+         text: "Education",
+         link: "/dashboard/education",
+      },
+      {
+         icon: <SquareSplitHorizontalIcon/>,
+         text:"Volunteering",
+         link: "/dashboard/volunteering",
+      },
+    ],
 
+
+
+
+
+   OVERVIEW: [
       
       {
          icon: <GraduationCap />,
          text: "Education",
-         total: 3,
+         id: "education",
       },
       {
          icon: <LayoutListIcon />,
          text: "Skills",
-         total: 7,
+         id: "skills",
       },
       {
          icon: <Layers3Icon />,
          text: "Experiences",
-         total: 5,
+         id: "expereinces",
       },
       {
          icon: <AwardIcon />,
          text: "Achievements",
-         total: 4,
+         id: "achievements",
       },
       {
          icon: <PanelsTopLeftIcon />,
          text: "Projects",
-         total: 2,
+         id: "projects",
       },
       {
          icon: <SquareSplitHorizontalIcon />,
          text: "Volunteering",
-         total: 4,
+         id: "volunteering",
       },
-      {
-         icon: <BadgeCheckIcon />,
-         text: "Socials",
-         total: 5,
-      },
+      
    ],
    EDUCATIONS: [
       {
@@ -243,42 +280,7 @@ export default {
       },
     ],
 
-   SOCIALS: [
-      {
-         name: 'GitHub',
-         Url: 'https://github.com/yourusername',
-         icon: <Github />,
-
-
-      },
-      {
-         name: 'LinkedIn',
-         Url: 'https://www.linkedin.com/in/yourusername/',
-         icon: <Linkedin />,
-
-
-      },
-      {
-         name: 'Twitter',
-         Url: 'https://twitter.com/yourusername',
-         icon: <Twitter />,
-
-      },
-      {
-         name: 'Instagram',
-         Url: 'https://www.instagram.com/yourusername/',
-         icon: <Instagram />,
-
-
-      },
-      {
-         name: 'Facebook',
-         Url: 'https://www.facebook.com/yourusername',
-         icon: <Facebook />,
-
-
-      },
-   ],
+ 
    FEATURE: [
       {
          title: "Create portfolio",

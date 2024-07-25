@@ -7,17 +7,31 @@ export const apiClient = axios.create(
     baseURL: baseUrl, 
     // withCredential: true,
 }
-)
+);
 
-const token = localStorage.getItem("accessToken");
+export const getDetails = () => {
+    const user = {};
+  
+    user.token = localStorage.getItem("accessToken");
+    user.firstName = localStorage.getItem("firstName");
+    user.lastName = localStorage.getItem("lastName");
+    user.userName = localStorage.getItem("userName");
+  
+    return user;
+  };
 
-if(token) {
-    apiClient.defaults.headers.common["Authorization"] =`Bearer ${token}`;
-}
+  export const clearDetails = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
+    localStorage.removeItem("userName");
+  };
 
-export const getToken = () => localStorage.getItem("accessToken");
 
-export const clearToken = () => localStorage.removeItem("accessToken");
+
+
+
+
 
 //Interceptor to add token to authorization header for every request
 apiClient.interceptors.request.use(
