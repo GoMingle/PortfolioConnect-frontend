@@ -13,8 +13,8 @@ const SignUp = () => {
   const navigate = useNavigate()
   const [UsernameAvailable, setUsernameAvailable] = useState(false);
   const [usernameNotAvailable, setUsernameNotAvailable] = useState(false);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ reValidateMode: "onBlur", mode: "all" });
+const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const[isUsernameLoading, setIsUsernameLoading] =useState(false);
 
