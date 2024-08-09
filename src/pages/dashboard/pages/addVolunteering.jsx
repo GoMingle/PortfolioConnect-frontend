@@ -75,7 +75,7 @@ const AddVolunteering = () => {
               <input
                 type="text"
                 id="skills"
-                {...register("skills", {required: "Description is required"})}
+                {...register("skills", {required: "Skills is required"})}
                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring  focus:ring-teal-400"
               />
             </div>
@@ -117,7 +117,7 @@ const AddVolunteering = () => {
           
         
         <div className="flex gap-32">
-        <div className="mb-4">
+        <div className="mb-4 mt-4">
           <button
             type="submit"
             className="bg-transparent border-2 border-teal-400 hover:bg-teal-400 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
@@ -129,9 +129,7 @@ const AddVolunteering = () => {
 
           </button>
         </div>
-        <div className="flex items-center justify-between mb-4">
-        
-        </div>
+       
         </div>
       </form>
     </div>

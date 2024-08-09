@@ -2,7 +2,7 @@ import { FallingLines } from "react-loader-spinner";
 
 const PageLoader = () => {
   return (
-    <div className="h-s flex items-center justify-center">
+    <div className=" flex items-center justify-center mt-40 ">
          <FallingLines
                 color="#1F2937"
                 width="50"

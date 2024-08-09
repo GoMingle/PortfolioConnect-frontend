@@ -29,32 +29,32 @@ const Sidebar = () => {
   
 
   
-    <div className="h-screen w-[400px] shadow flex flex-col px-5 py-8 bg-white">
-    <span className="text-3xl font-bold text-pink text-center">
-      iPortfolio
+    <div className="h-fit  w-60 shadow flex flex-col px-5 py-8 bg-white  ">
+    <span className="text-2xl font-bold text-teal-500 text-center">
+      PortfolioConnect
     </span>
-    <div className="flex flex-col gap-y-5 mt-12">
+    <div className="flex flex-col gap-y-2 mt-5">
       {K.NAVLINKS.map(({ icon, text, link }, index) => (
         <NavLink
           to={link}
           key={index}
           className={({ isActive }) =>
-            `flex gap-x-4 items-center hover:bg-pink hover:text-white hover:rounded-md p-2 ${
-              isActive ? "bg-pink text-white" : ""
+            `flex gap-x-4 items-center  hover:text-teal-500   hover:rounded-md p-2 ${
+              isActive ? " text-black font-semibold" : ""
             }`
           }
           end
         >
-          <span className="bg-pink text-white p-2 rounded-full">{icon}</span>
-          <span>{text}</span>
+          <span className="size-3 text-teal-500 p-2 ">{icon}</span>
+          <span className="mt-5 ml-2 font-semibold">{text}</span>
         </NavLink>
       ))}
     </div>
     <button
-      className="flex gap-x-4 items-center mt-auto hover:bg-pink hover:text-white hover:rounded-md p-2"
+      className="flex gap-x-4 items-center mt-24 bg-teal-500 rounded-md "
       onClick={logout}
     >
-      <span className="bg-pink text-white p-2 rounded-full">
+      <span className=" text-white p-2 rounded-full">
         <LogOut />
       </span>
       <span>Logout</span>

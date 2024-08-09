@@ -1,4 +1,4 @@
-import { apiClient } from "./config"
+import { apiClient, clearDetails } from "./config"
 
 export const apiSignUp = async(payload) =>{
     return apiClient.post("/auth/signup", payload);
@@ -9,10 +9,11 @@ export const apiLogIn = async(payload) =>{
 }
 
  export const apiCheckUsernameExists = async(userName) => {
-    return apiClient.get(`/auth/getUser/${userName}`);
+    return apiClient.get(`/auth/${userName}`);
  }
 
  export const apiLogout = async () => {
-    clearToken();
+    clearDetails();
   };
+
   

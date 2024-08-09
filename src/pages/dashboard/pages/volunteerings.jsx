@@ -7,6 +7,7 @@ import PageLoader from "../../../components/pageLoader";
 import { apiDeleteVolunteering, apiGetVolunteering } from "../../../services/volunteering";
 import { noData } from "../../../assets";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 
 const Volunteerings = () => {
@@ -55,13 +56,13 @@ const Volunteerings = () => {
          isLoading ? <PageLoader/> :
       <div>
         {
-          Volunteerings.length == 0 ? <div className="flex flex-col items-center gap-y-3 justify-center">
+          volunteerings.length == 0 ? <div className="flex flex-col items-center gap-y-3 justify-center">
           <img src={noData} alt="no data" className="w-56" />
           <p className="font-semibold"> No Volunteerings added yet</p>
         </div> :
 
            <div className="grid grid-cols-1 gap-6  " >
-           {volunteerings.map(({ organization, description, skills, responsibility, startDate, endDate }, index) => (
+           {volunteerings.map(({ organization, description, skills, responsibility, startDate, endDate,id }, index) => (
              <div key={index} className=" bg-white  shadow-md rounded-xl flex flex-col p-5">
                <div className="ml-auto flex gap-x-2 ">
                  <button>

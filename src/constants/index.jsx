@@ -40,7 +40,7 @@ export default {
       {
          icon: <SquareSplitHorizontalIcon/>,
          text:"Volunteering",
-         link: "/dashboard/volunteering",
+         link: "/dashboard/volunteerings",
       },
     ],
 

@@ -1,15 +1,15 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { getToken } from "../../../services/config";
+// import { Navigate, Outlet } from "react-router-dom";
+// import { getDetails } from "../../../services/config";
 
-const AuthLayout = () => {
-  const token = getToken();
+// const AuthLayout = () => {
+//   const {token} = getDetails();
 
-  if (token) return <Navigate to="/dashboard" />;
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
-};
+//   if (token) return ;
+//   return (
+//     <div>
+//       <Outlet />
+//     </div>
+//   );
+// };
 
-export default AuthLayout;
+// export default AuthLayout;

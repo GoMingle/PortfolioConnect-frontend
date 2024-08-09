@@ -6,7 +6,8 @@ import { apiLogIn } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../components/loader";
-import loginVideo from "../assets/videos/loginVideo.mp4"
+import signupLoginVideo from "../assets/videos/signupLoginVideo.mp4"
+
 
 const LogIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,6 +23,13 @@ const LogIn = () => {
     setShowPassword(!showPassword);
   };
 
+  const addToLocalStorage = (accessToken, user) => {
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("firstName", user.firstName);
+    localStorage.setItem("lastName", user.lastName);
+    localStorage.setItem("userName", user.userName);
+  };
+
   const onSubmit = async (data) => {
     console.log(data);
     setIsSubmitting(true);
@@ -32,7 +40,7 @@ const LogIn = () => {
       })
       console.log("Response: ", res.data);
 
-      localStorage.setItem("accessToken", res.data.acessToken)
+      addToLocalStorage(res.data.acessToken, res.data.user);
       toast.success(res.data.message);
       setTimeout(() => { navigate("/dashboard") }, 5000);
 
@@ -53,7 +61,7 @@ const LogIn = () => {
         muted
         className="absolute inset-0 object-cover w-full h-full"
       >
-        <source src={loginVideo} type="video/mp4" />
+        <source src={signupLoginVideo} type="video/mp4" />
         
       </video>
         <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md relative">
@@ -102,7 +110,7 @@ const LogIn = () => {
               className="w-full px-4 py-2 text-white  rounded-md bg-teal-400 "
             >
               {isSubmitting ? <Loader/> : "Login"}
-
+              
             </button>
 
           </form>

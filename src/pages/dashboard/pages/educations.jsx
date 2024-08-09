@@ -54,7 +54,7 @@ const Educations = () => {
       <PagesLayout 
       headerText="EDUCATION"
       buttonText="Add New Education"
-      onClick={() => navigate("/dashboard/education/add-education")}
+      onClick={() => navigate("/dashboard/educations/add-education")}
        >
 
      {
@@ -63,7 +63,7 @@ const Educations = () => {
         {
           educations.length == 0 ? <div className="flex flex-col items-center gap-y-3 justify-center">
           <img src={noData} alt="no data" className="w-56" />
-          <p className="font-semibold"> No Education added yet</p>
+          <p> No Achievement added yet</p>
         </div> : 
           <div className="grid grid-cols-1 gap-6  ">
           {educations.map(({ Schoolname, program, qualification, location, startDate, endDate, id }, index) => (

@@ -53,7 +53,7 @@ const Projects = () => {
   return (
     <div className="bg-teal-500 h-full">
       <PagesLayout headerText="PROJECTS"
-        buttonText="Add New Achievement"
+        buttonText="Add New Project"
         onClick={() => navigate("/dashboard/projects/add-project")} >
 
         {

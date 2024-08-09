@@ -23,12 +23,12 @@ const Overview = () => {
     experiences: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [profile] = useOutletContext();
+  const [user] = useOutletContext();
 
   const getPreviewLink = () => {
-    if (!profile) return "/preview/theody";
+    if (!user) return "/preview/theody";
 
-    return `/preview/${profile.userName}`;
+    return `/preview/${user.userName}`;
   };
 
   const getData = async () => {
@@ -81,7 +81,7 @@ const Overview = () => {
       <div className="p-10 flex flex-col gap-y-10">
         <Link
           to={getPreviewLink()}
-          className="bg-pink text-white ml-auto px-6 py-3 rounded-lg"
+          className="bg-white text-teal-500 ml-auto px-6 py-3 rounded-lg"
         >
           View Preview
         </Link>
@@ -89,7 +89,7 @@ const Overview = () => {
           {K.OVERVIEW.map(({ icon, text, id }, index) => (
             <div
               key={index}
-              className="h-40 shadow-md bg-white p-6 flex flex-col justify-between"
+              className="h-40 shadow-md rounded-md bg-white p-6 flex flex-col justify-between"
             >
               <div className="flex justify-between">
                 <span className="text-pink">{icon}</span>

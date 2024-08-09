@@ -14,19 +14,22 @@ const AddProject = () => {
       
     const onSubmit = async(data) => {
       console.log(data)
+      console.log(data.image[0])
       setIsSubmitting(true);
       try {
-        const res = await apiAddProject({
-          projectName: data.projectName,
-          description: data.description,
-          contributors: data.contributors,
-          nameOfInstitution: data.nameOfInstitution,
-          startDate: data.startDate,
-          endDate: data.endDate,
-          image: data.image,
-          link: data.link,
+        const formData = new FormData();
 
-        });
+        //Append all form data 
+       formData.append('projectName', data.projectName) 
+       formData.append ('description', data.description)
+       formData.append ('contributors', data.contributors)
+       formData.append ('nameOfInstitution', data.nameOfInstitution)
+       formData.append ('startDate', data.startDate)
+       formData.append ('endDate', data.endDate)
+       formData.append ('image', data.image)
+       formData.append ('link', data.link)
+
+        const res = await apiAddProject(formData);
         console.log(res.data);
         toast.success(res.data.message);
       } catch (error){
@@ -127,8 +130,8 @@ const AddProject = () => {
                 />
               </div>
 
-            <div>
-              <label> 
+            <div className="mb-2">
+              <label className="block text-gray-400 text-sm font-bold mb-2"> 
                 Link
               </label>
               <input

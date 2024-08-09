@@ -1,15 +1,14 @@
 import { motion } from "framer-motion";
-import heroVideo from "../../assets/videos/heroVideo.mov"
-import heroBg from "../../assets/images/heroBg.jpg";
 import Feature from "./components/feature";
 import VideoBg from "./components/videoBg";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-screen brightness-90">
      <VideoBg/>
       {/* <img className="object-cover w-full h-full brightness-50" src={heroBg} alt="hero background" /> */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white space-y-4 mt-28">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white space-y-4 mt-28 ">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -17,8 +16,11 @@ const Landing = () => {
         >
           <h3 className="text-6xl font-bold">Portfolio Connect </h3>
           <p className="text-lg">Connecting your creativity to opportunities</p>
-        </motion.div>
-        <motion.button
+       
+       </motion.div>
+       
+       <Link to = "/signup">
+       <motion.button
           className="bg-gray-900 rounded-full py-2 px-4 text-white hover:bg-teal-500 text-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -26,6 +28,7 @@ const Landing = () => {
         >
           Get Started
         </motion.button>
+       </Link>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}

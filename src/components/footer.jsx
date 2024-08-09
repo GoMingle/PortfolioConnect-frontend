@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-gray-900 to-teal-500 text-white py-12 mt-24">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-        
+
         <div>
           <h3 className="text-xl font-semibold mb-4">Let's talk about</h3>
           <p className="mb-6">

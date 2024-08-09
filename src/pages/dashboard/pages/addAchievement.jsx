@@ -14,15 +14,20 @@ const AddAchievement = () => {
       
     const onSubmit = async(data) => {
       console.log(data)
+      console.log(data.image[0])
       setIsSubmitting(true);
       try {
-        const res = await apiAddAchievement({
-          award: data.award,
-          description: data.description,
-          image: data.image,
-          date: data.date,
-          nameOfInstitution: data.nameOfInstitution,
-        });
+        const formData = new FormData();
+
+        formData.append('award', data.award) 
+        formData.append ('description', data.description)
+        formData.append ('image', data.image)
+        formData.append ('date', data.date)
+        formData.append ('nameOfInstitution', data.nameOfInstitution)
+
+
+
+        const res = await apiAddAchievement(formData);
         console.log(res.data);
         toast.success(res.data.message);
       } catch (error){

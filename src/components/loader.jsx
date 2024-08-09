@@ -1,12 +1,14 @@
 import { FallingLines } from "react-loader-spinner"
 const Loader = () => {
   return (
-    <FallingLines
-                color="#27AD9F"
+    <div className="flex items-center justify-center ">
+      <FallingLines
+                color="#1F2937"
                 width="50"
                 visible={true}
                 ariaLabel="falling-circles-loading"
               />
+    </div>
   )
 }
 

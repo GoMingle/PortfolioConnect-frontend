@@ -1,13 +1,13 @@
 import { apiClient } from "./config";
 
-export const apiAddUserProfile = async (payload) => {
+export const apiAdduserProfile = async (payload) => {
   return apiClient.post("/userProfile", payload);
 };
 
-export const apiGetUserProfile = async () => {
+export const apiGetuserProfile = async () => {
   return apiClient.get("/userProfile");
 };
 
-export const apiUpdateUserProfile = async (id, payload) => {
+export const apiUpdateuserProfile = async (id, payload) => {
   return apiClient.patch(`/userProfile/${id}`, payload);
 };

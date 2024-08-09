@@ -37,7 +37,7 @@ export const getDetails = () => {
 apiClient.interceptors.request.use(
   (config) => {
     // Check if there's a token in localStorage
-    const token = getToken();
+    const {token} = getDetails();
     if (token) {
       // Set the token in the Authorization header
       config.headers.Authorization = `Bearer ${token}`;
@@ -60,7 +60,7 @@ apiClient.interceptors.response.use(
     // If there's an error in the response (like a 401), handle it here
     if (error.response.status === 401) {
       // remove accessToken from local storage
-      clearToken();
+      clearDetails();
       // Handle 401 error (e.g., logout user and redirect to login page)
       window.location.replace("/login");
     }
